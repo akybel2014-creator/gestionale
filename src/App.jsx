@@ -112,10 +112,20 @@ function ScrollToTop() {
 }
 
 function SmoothScroll() {
+    const { pathname } = useLocation();
     useEffect(() => {
+        if (STITCH_ROUTES.has(pathname)) {
+            if (window.__lenis) {
+                window.__lenis.destroy();
+                window.__lenis = null;
+            }
+            return;
+        }
         let lenis;
         let raf;
+        let cancelled = false;
         import("lenis").then(({ default: Lenis }) => {
+            if (cancelled) return;
             lenis = new Lenis({ duration: 1.15, smoothWheel: true });
             window.__lenis = lenis;
             const loop = (t) => {
@@ -125,11 +135,12 @@ function SmoothScroll() {
             raf = requestAnimationFrame(loop);
         });
         return () => {
+            cancelled = true;
             if (raf) cancelAnimationFrame(raf);
             if (lenis) lenis.destroy();
             window.__lenis = null;
         };
-    }, []);
+    }, [pathname]);
     return null;
 }
 

@@ -170,7 +170,9 @@
     body:has(.stitch-app) {
         background-color: #f7f9fb;
         color: #191c1e;
-        overflow-x: hidden;
+        overflow-x: clip;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
     }
     h1, h2, h3, h4 {
         font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
@@ -319,7 +321,7 @@
     --input: 214 32% 91%;
     --ring: 16 100% 57%;
     --radius: 0.5rem;
-    overscroll-behavior: none;
+    touch-action: pan-y;
 }
 
 .stitch-app main > :first-child {

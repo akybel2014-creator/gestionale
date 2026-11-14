@@ -4,9 +4,6 @@ import { LogOut } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 
-export const STITCH_PROFILE_URL =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBzkxWSjK4FxyAN3fvcXuQ0qWFy2DR0RCllygccN7WB6S3iBZpSxXpYdqlBnApYTDlygIt7luwGLrldCwOaNub2XJaNMM6-mXk9ULKnVSSBYo2c1dpLQvdmgfKNrzaEMlC-sviwZ7II7NCHUL6zlSqhiutybQuomDUgQj50L6T7ITPrpP4OD5GTmuTWeXr4ClOTv_0aCvWcYsD5lxDQh9cTp99xtPos97afzjhAnDdF";
-
 type ActiveTab = "dashboard" | "preventivo" | "whatsapp" | "listini" | "none";
 
 interface StitchShellProps {
@@ -49,7 +46,7 @@ export default function StitchShell({
   };
 
   return (
-    <div className="stitch-app bg-surface font-body-md text-on-surface flex flex-col min-h-screen w-full overflow-x-hidden">
+    <div className="stitch-app bg-surface font-body-md text-on-surface flex flex-col min-h-screen w-full overflow-x-clip">
       <header className="fixed top-0 inset-x-0 z-50 bg-primary-container/95 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.08)]">
         <div className="w-full max-w-5xl mx-auto h-16 px-4 sm:px-6 flex items-center justify-between gap-2">
           <Link to="/" className="flex items-center shrink-0">
@@ -71,20 +68,11 @@ export default function StitchShell({
             <Link
               to="/listini-iva"
               aria-label="Profilo e Listini"
-              className="flex items-center gap-2 min-w-0"
+              className="flex items-center gap-1.5 min-w-0 px-2.5 py-1.5 rounded-lg hover:bg-white/10 transition-colors"
             >
-              <span className="font-label-sm text-xs font-semibold text-on-primary truncate max-w-[110px] sm:max-w-[180px]">
+              <span className="font-label-sm text-xs font-semibold text-on-primary truncate max-w-[130px] sm:max-w-[200px]">
                 {displayName}
               </span>
-              <div className="relative flex items-center justify-center shrink-0">
-                <img
-                  alt="Profile"
-                  className="w-8 h-8 rounded-full object-cover"
-                  referrerPolicy="no-referrer"
-                  src={STITCH_PROFILE_URL}
-                />
-                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-status-success" />
-              </div>
             </Link>
             <button
               type="button"

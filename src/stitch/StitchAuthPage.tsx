@@ -187,7 +187,7 @@ export default function StitchAuthPage() {
   };
 
   return (
-    <div className="stitch-app min-h-screen w-full overflow-y-auto overflow-x-hidden bg-surface text-on-surface flex flex-col">
+    <div className="stitch-app min-h-screen w-full overflow-x-clip bg-surface text-on-surface flex flex-col">
       {/* Header Brand */}
       <header className="w-full bg-primary-container text-on-primary pt-10 sm:pt-12 pb-12 px-4 rounded-b-[2rem] shadow-md shrink-0">
         <div className="w-full max-w-md mx-auto flex flex-col items-center text-center gap-3">
