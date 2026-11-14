@@ -9,6 +9,9 @@
     "start": "tsx server.ts",
     "lint": "tsc --noEmit"
   },
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@google/genai": "^2.32.0",
     "@hookform/resolvers": "^5.0.1",
