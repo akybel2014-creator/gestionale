@@ -1,0 +1,297 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import StitchShell from "./StitchShell";
+
+export default function RicevutaGsePage() {
+  const navigate = useNavigate();
+  const [inlineToast, setInlineToast] = useState<string | null>(null);
+
+  const showToast = (msg: string) => {
+    setInlineToast(msg);
+    setTimeout(() => setInlineToast(null), 2600);
+  };
+
+  return (
+    <StitchShell title="Whatsapp Hub" activeTab="none">
+      <div className="flex flex-col w-full pb-10">
+        {/* BARRA NAVIGAZIONE CONTEXT */}
+        <div className="flex items-center justify-between py-2 mb-3">
+          <button
+            className="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors py-1"
+            onClick={() => navigate("/")}
+            type="button"
+          >
+            <span className="material-symbols-outlined text-lg">arrow_back</span>
+            <span className="font-label-md text-label-md">Dashboard</span>
+          </button>
+          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high text-tertiary">
+            <span
+              className="material-symbols-outlined text-base text-status-success"
+              style={{ fontVariationSettings: "'FILL' 1" }}
+            >
+              verified
+            </span>
+            <span className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface">
+              Ricevuta Ufficiale GSE
+            </span>
+          </div>
+        </div>
+
+        {/* HERO CARD CONFERMA & TRASMISSIONE */}
+        <div className="relative overflow-hidden rounded-xl bg-surface-card shadow-sm p-5 mb-4">
+          {/* Accent Top Banner Glow */}
+          <div className="absolute top-0 inset-x-0 h-1.5 bg-status-success" />
+          <div className="flex flex-col items-center text-center pt-2">
+            {/* Badge Icon animato con micro-dettaglio */}
+            <div className="relative w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mb-3.5 shadow-sm">
+              <span
+                className="material-symbols-outlined text-4xl text-status-success"
+                style={{ fontVariationSettings: "'FILL' 1" }}
+              >
+                task_alt
+              </span>
+              <span className="absolute -bottom-1 -right-1 w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-xs">
+                <span className="material-symbols-outlined text-xs">bolt</span>
+              </span>
+            </div>
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-surface-container text-status-success font-label-sm text-label-sm font-bold mb-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-status-success animate-ping" />
+              TRASMESSA CON SUCCESSO
+            </span>
+            <h2 className="font-headline-md text-headline-md text-primary font-bold tracking-tight mb-1">
+              Pratica Trasmessa al GSE!
+            </h2>
+            <p className="font-body-md text-body-md text-text-muted mb-4">
+              Istanza Portaltermico: <span className="font-label-md text-primary font-semibold">GSE-CT2-2025-0814</span>
+            </p>
+            {/* Timbro Digitale & Notifica Certificata Box */}
+            <div className="w-full bg-surface-container-low rounded-lg p-3 text-left space-y-2">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-1.5 text-text-muted">
+                  <span className="material-symbols-outlined text-sm">schedule</span>
+                  <span className="font-body-sm text-body-sm">Data &amp; Ora Invio:</span>
+                </div>
+                <span className="font-label-sm text-label-sm text-primary font-semibold text-right">
+                  24 Ott 2025 • 11:42:18 CET
+                </span>
+              </div>
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex items-center gap-1.5 text-text-muted">
+                  <span className="material-symbols-outlined text-sm">mark_email_read</span>
+                  <span className="font-body-sm text-body-sm">Protocollo GSE:</span>
+                </div>
+                <span className="font-label-sm text-label-sm text-primary font-semibold text-right">GSE/2025/CT-991204</span>
+              </div>
+              <div className="pt-1.5 border-t border-surface-container flex items-center justify-between text-text-muted">
+                <span className="font-label-sm text-[10px] tracking-tight uppercase">SHA-256 Digitale:</span>
+                <span className="font-mono text-[11px] text-text-muted tracking-tight truncate max-w-[190px]">
+                  e8b9419c8f02a...f4a138cb
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* BOX RIEPILOGO ECONOMICO & LIQUIDAZIONE */}
+        <div className="rounded-xl bg-surface-card shadow-sm p-4 mb-4">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-secondary-container">payments</span>
+              <span className="font-headline-sm text-headline-sm text-primary font-semibold">Riepilogo Liquidazione</span>
+            </div>
+            <span className="px-2 py-0.5 rounded bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+              Rata Unica
+            </span>
+          </div>
+          {/* Valore Economico */}
+          <div className="bg-surface-container-lowest rounded-lg p-3.5 mb-3 flex items-baseline justify-between shadow-sm">
+            <div className="flex flex-col">
+              <span className="font-body-sm text-body-sm text-text-muted">Incentivo Lordo Spettante</span>
+              <span className="font-label-sm text-label-sm text-status-success font-semibold">Bonifico Diretto GSE</span>
+            </div>
+            <div className="flex items-baseline gap-1">
+              <span className="font-numeric-currency-lg text-numeric-currency-lg text-primary font-bold">€ 4.250,00</span>
+            </div>
+          </div>
+          {/* Dettagli Esecuzione Bancaria e Intervento */}
+          <div className="space-y-2.5 text-on-surface">
+            <div className="flex items-center gap-2.5 p-2 rounded-lg bg-surface-container-low">
+              <span className="material-symbols-outlined text-text-muted text-lg">hvac</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-body-sm text-body-sm text-text-muted leading-tight">Intervento Conforme</p>
+                <p className="font-label-sm text-label-sm text-primary font-semibold truncate">Daikin Altherma R 8kW (Int. 2.A)</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2.5 p-2 rounded-lg bg-surface-container-low">
+              <span className="material-symbols-outlined text-text-muted text-lg">account_balance</span>
+              <div className="flex-1 min-w-0">
+                <p className="font-body-sm text-body-sm text-text-muted leading-tight">Beneficiario &amp; IBAN</p>
+                <p className="font-label-sm text-label-sm text-primary font-semibold truncate">Ing. Roberto Colombo</p>
+                <p className="font-mono text-body-sm text-text-muted text-[11px] truncate tracking-tight">
+                  IT60 X 05428 01601 000000129841
+                </p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2 p-2 rounded-lg bg-surface-container text-on-surface-variant">
+              <span className="material-symbols-outlined text-base text-status-warning mt-0.5">hourglass_top</span>
+              <p className="font-body-sm text-body-sm leading-tight text-on-surface">
+                Accredito stimato: <strong className="font-semibold text-primary">60–90 giorni lavorativi</strong> dalla convalida definitiva.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* TIMELINE OPERATIVA GSE */}
+        <div className="rounded-xl bg-surface-card shadow-sm p-4 mb-4">
+          <div className="flex items-center gap-2 mb-4">
+            <span className="material-symbols-outlined text-primary">timeline</span>
+            <h3 className="font-headline-sm text-headline-sm text-primary font-semibold">Stato di Avanzamento GSE</h3>
+          </div>
+          <div className="relative pl-6 space-y-4">
+            {/* Linea connettiva verticale */}
+            <div className="absolute left-2.5 top-2 bottom-3 w-0.5 bg-surface-container" />
+            {/* Step 1 (Fatto) */}
+            <div className="relative flex items-start gap-3">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-status-success text-on-tertiary flex items-center justify-center ring-4 ring-surface-card">
+                <span className="material-symbols-outlined text-xs">check</span>
+              </div>
+              <div className="flex-1">
+                <p className="font-label-md text-label-md text-primary font-semibold">Ricezione &amp; Protocollo Telematico</p>
+                <p className="font-body-sm text-body-sm text-status-success font-medium">
+                  Completato con successo • Prot. GSE-991204
+                </p>
+              </div>
+            </div>
+            {/* Step 2 (In corso) */}
+            <div className="relative flex items-start gap-3">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-secondary-container text-on-primary flex items-center justify-center ring-4 ring-surface-card">
+                <span className="material-symbols-outlined text-xs animate-spin">refresh</span>
+              </div>
+              <div className="flex-1">
+                <div className="flex items-center gap-2">
+                  <p className="font-label-md text-label-md text-primary font-semibold">Istruttoria Documentale Automatica</p>
+                </div>
+                <p className="font-body-sm text-body-sm text-text-muted">In elaborazione GSE • Tempi stimati 15–30 giorni</p>
+              </div>
+            </div>
+            {/* Step 3 (In attesa) */}
+            <div className="relative flex items-start gap-3">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-surface-container text-text-muted flex items-center justify-center ring-4 ring-surface-card">
+                <span className="w-1.5 h-1.5 rounded-full bg-text-muted" />
+              </div>
+              <div className="flex-1">
+                <p className="font-label-md text-label-md text-text-muted font-medium">Lettera di Ammissione Agli Incentivi</p>
+                <p className="font-body-sm text-body-sm text-text-muted">In attesa dell&apos;esito formale</p>
+              </div>
+            </div>
+            {/* Step 4 (In attesa) */}
+            <div className="relative flex items-start gap-3">
+              <div className="absolute -left-6 top-0.5 w-5 h-5 rounded-full bg-surface-container text-text-muted flex items-center justify-center ring-4 ring-surface-card">
+                <span className="w-1.5 h-1.5 rounded-full bg-text-muted" />
+              </div>
+              <div className="flex-1">
+                <p className="font-label-md text-label-md text-text-muted font-medium">Emissione Mandato di Pagamento</p>
+                <p className="font-body-sm text-body-sm text-text-muted">Liquidazione su conto corrente bancario</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FASCICOLO & RICEVUTE TELEMATICHE */}
+        <div className="rounded-xl bg-surface-card shadow-sm p-4 mb-5">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <span className="material-symbols-outlined text-primary">inventory_2</span>
+              <h3 className="font-headline-sm text-headline-sm text-primary font-semibold">Documenti Ufficiali Generati</h3>
+            </div>
+            <span className="font-label-sm text-label-sm text-text-muted">2 File PDF</span>
+          </div>
+          <div className="space-y-2">
+            {/* File 1: Ricevuta GSE */}
+            <div className="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-9 h-9 rounded-lg bg-error-container text-error flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined text-xl">picture_as_pdf</span>
+                </div>
+                <div className="min-w-0">
+                  <p className="font-label-md text-label-md text-primary font-semibold truncate">Ricevuta_GSE_CT2_0814.pdf</p>
+                  <p className="font-body-sm text-body-sm text-text-muted truncate">Firma Digitale &amp; Marca • 428 KB</p>
+                </div>
+              </div>
+              <button
+                aria-label="Scarica ricevuta GSE"
+                className="p-2 text-primary hover:text-secondary-container transition-colors flex-shrink-0"
+                onClick={() => showToast("Download Ricevuta_GSE_CT2_0814.pdf avviato.")}
+                type="button"
+              >
+                <span className="material-symbols-outlined">download</span>
+              </button>
+            </div>
+            {/* File 2: Fascicolo Asseverato */}
+            <div className="flex items-center justify-between p-3 rounded-lg bg-surface-container-low hover:bg-surface-container transition-colors">
+              <div className="flex items-center gap-3 min-w-0">
+                <div className="w-9 h-9 rounded-lg bg-surface-container text-primary flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined text-xl">folder_zip</span>
+                </div>
+                <div className="min-w-0">
+                  <p className="font-label-md text-label-md text-primary font-semibold truncate">
+                    Fascicolo_Asseverato_Completo.pdf
+                  </p>
+                  <p className="font-body-sm text-body-sm text-text-muted truncate">APE + Scheda Tecnica + FIR • 6.4 MB</p>
+                </div>
+              </div>
+              <button
+                aria-label="Scarica fascicolo asseverato"
+                className="p-2 text-primary hover:text-secondary-container transition-colors flex-shrink-0"
+                onClick={() => showToast("Download Fascicolo_Asseverato_Completo.pdf avviato.")}
+                type="button"
+              >
+                <span className="material-symbols-outlined">download</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* AZIONI PRINCIPALI E CONDIVISIONE WHATSAPP */}
+        <div className="flex flex-col gap-2.5">
+          {/* CTA WhatsApp Primaria */}
+          <button
+            className="h-[52px] w-full rounded-xl bg-[#25D366] text-white flex items-center justify-center gap-2 font-label-lg text-label-lg shadow-sm active:scale-[0.98] transition-transform"
+            onClick={() => navigate("/anteprima-whatsapp-colombo")}
+            type="button"
+          >
+            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.149.929 3.182 0 5.767-2.587 5.768-5.766 0-3.18-2.586-5.771-5.768-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.299.144.347.491 1.2.534 1.288.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.179.18-.077.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86.174.086.275.072.376-.043.101-.116.433-.506.549-.679.116-.173.231-.144.39-.086.159.058 1.011.477 1.184.564.173.087.289.13.332.202.043.073.043.419-.101.824z" />
+            </svg>
+            <span>Invia Ricevuta al Cliente su WhatsApp</span>
+          </button>
+          {/* Azione Secondaria Scarica Ricevuta GSE */}
+          <button
+            className="h-12 w-full rounded-xl bg-surface-container text-primary flex items-center justify-center gap-2 font-label-md text-label-md active:scale-[0.98] transition-transform"
+            onClick={() => showToast("Download Ricevuta Ufficiale GSE (PDF) completato.")}
+            type="button"
+          >
+            <span className="material-symbols-outlined text-lg">download_for_offline</span>
+            <span>Scarica Ricevuta Ufficiale GSE (PDF)</span>
+          </button>
+          {/* Azione Terziaria Ritorno / Archivia */}
+          <button
+            className="h-10 w-full text-text-muted hover:text-primary flex items-center justify-center gap-1.5 font-label-sm text-label-sm transition-colors"
+            onClick={() => navigate("/registro-gse")}
+            type="button"
+          >
+            <span className="material-symbols-outlined text-base">folder_open</span>
+            <span>Archivia e Vai a Elenco Pratiche</span>
+          </button>
+        </div>
+
+        {inlineToast && (
+          <div className="fixed bottom-24 inset-x-margin max-w-sm mx-auto bg-primary text-on-primary px-4 py-3 rounded-xl shadow-2xl flex items-center gap-2.5 z-50">
+            <span className="material-symbols-outlined text-status-success text-lg">check_circle</span>
+            <p className="font-label-md text-label-md font-semibold">{inlineToast}</p>
+          </div>
+        )}
+      </div>
+    </StitchShell>
+  );
+}

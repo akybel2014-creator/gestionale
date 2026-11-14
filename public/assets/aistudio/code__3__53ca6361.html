@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="it"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#8691a2", "tertiary": "#001a06", "inverse-surface": "#2d3133", "surface-card": "#FFFFFF", "outline": "#75777c", "surface-bright": "#f7f9fb", "secondary": "#b02f00", "on-secondary-fixed": "#3b0900", "primary-container": "#1f2a38", "surface-dim": "#d8dadc", "on-error-container": "#93000a", "on-surface-variant": "#44474c", "secondary-fixed-dim": "#ffb5a0", "surface-container-lowest": "#ffffff", "text-muted": "#64748B", "error-container": "#ffdad6", "on-secondary": "#ffffff", "primary": "#0a1623", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#3d4857", "inverse-primary": "#bcc7da", "error": "#ba1a1a", "border-slate": "#E2E8F0", "secondary-container": "#ff5722", "on-primary": "#ffffff", "status-success": "#16A34A", "primary-fixed": "#d8e3f6", "surface-container": "#eceef0", "on-tertiary-fixed-variant": "#005322", "primary-fixed-dim": "#bcc7da", "on-tertiary-container": "#00a74c", "secondary-fixed": "#ffdbd1", "surface-tint": "#545f6f", "surface-container-highest": "#e0e3e5", "surface-container-high": "#e6e8ea", "on-error": "#ffffff", "on-primary-fixed": "#111c2a", "tertiary-fixed-dim": "#3de273", "surface-container-low": "#f2f4f6", "on-secondary-fixed-variant": "#862200", "inverse-on-surface": "#eff1f3", "tertiary-fixed": "#66ff8e", "background": "#f7f9fb", "surface": "#f7f9fb", "on-tertiary": "#ffffff", "status-warning": "#F59E0B", "on-tertiary-fixed": "#002109", "on-background": "#191c1e", "outline-variant": "#c5c6cc", "status-danger": "#DC2626", "on-secondary-container": "#541100", "tertiary-container": "#003111", "on-surface": "#191c1e" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "space-xl": "2rem", "margin": "1rem", "gutter": "1rem", "space-md": "1rem", "space-lg": "1.5rem", "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-xs": "0.25rem" }, fontFamily: { "headline-md": ["Outfit"], "body-sm": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "display-hero-mobile": ["Outfit"], "headline-lg": ["Outfit"], "numeric-currency-md": ["Outfit"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "display-hero": ["Outfit"], "headline-sm": ["Outfit"], "numeric-currency-lg": ["Outfit"] }, fontSize: { "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }], "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "display-hero-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "numeric-currency-md": ["20px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "numeric-currency-lg": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-primary-container/95 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.08)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="CasaLavoroPRO Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VoeN0fXByyE2abwyO6qXNO9a6Q4IOXCdYUX0ctGhI68hM8krkh8gSTYNguhZV9_4ZhOg8bLTH4DbDkErBFH6zGC85_iA8HuhB7LMBfwGcM3_xMjySMyqLZLeFARJfEq9XUHkw5tsa5yXuRf5npiheU_rR4TcG7eY9jYt6tOOCqj_SHQyLJQqG01mUvBEMRVqpgh4YTqM85mqW3Alx_onw6VppiFn7MtEH_04DBFLG7"/><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-on-primary tracking-tight font-bold">CasaLavoro</span><span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary font-label-sm text-label-sm tracking-wider uppercase font-bold">PRO</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifiche" class="w-11 h-11 flex items-center justify-center rounded-full text-on-primary-container hover:text-on-primary relative transition-colors"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary-container"></span></button><div class="relative flex items-center justify-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzkxWSjK4FxyAN3fvcXuQ0qWFy2DR0RCllygccN7WB6S3iBZpSxXpYdqlBnApYTDlygIt7luwGLrldCwOaNub2XJaNMM6-mXk9ULKnVSSBYo2c1dpLQvdmgfKNrzaEMlC-sviwZ7II7NCHUL6zlSqhiutybQuomDUgQj50L6T7ITPrpP4OD5GTmuTWeXr4ClOTv_0aCvWcYsD5lxDQh9cTp99xtPos97afzjhAnDdF"/><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-status-success"></span></div></div></div><div class="px-margin pb-2 flex items-center justify-between"><h1 class="font-headline-md text-headline-md text-on-primary truncate">Whatsapp Hub</h1><span class="flex items-center gap-1 font-label-sm text-label-sm text-on-primary-container"><span class="w-1.5 h-1.5 rounded-full bg-status-success animate-pulse"></span>Sync attivo</span></div></header><main class="flex flex-col relative w-full pt-28 pb-28 px-margin bg-surface flex-1"><div class="flex flex-col w-full gap-space-md">
+<!-- WhatsApp Automation Live Status Banner -->
+<section class="w-full bg-surface-card rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<div class="flex items-start gap-3">
+<div class="w-10 h-10 rounded-full bg-status-success/15 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-status-success text-2xl" style="font-variation-settings: 'FILL' 1;">mark_chat_unread</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">Hub WhatsApp PRO</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-status-success/10 text-status-success font-label-sm text-label-sm uppercase tracking-wider font-bold">
+            Live Sync
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">
+          Automazione attiva: tracking in tempo reale della consegna, lettura del preventivo e risposte clienti.
+        </p>
+</div>
+<div class="shrink-0 flex items-center justify-center w-7 h-7 rounded-full bg-surface-container-low text-on-surface-variant">
+<span class="material-symbols-outlined text-lg">bolt</span>
+</div>
+</div>
+</section>
+<!-- Search & Filter Controls -->
+<section class="flex flex-col gap-2.5 w-full">
+<!-- Search Bar -->
+<div class="relative w-full">
+<div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-text-muted">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="w-full h-12 pl-10 pr-10 bg-surface-card rounded-xl font-body-md text-body-md text-on-surface placeholder:text-text-muted shadow-sm focus:outline-none" id="chat-search-input" placeholder="Cerca per cliente, telefono o preventivo..." type="text"/>
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-text-muted cursor-pointer" onclick="document.getElementById('chat-search-input').value = ''">
+<span class="material-symbols-outlined text-lg">tune</span>
+</div>
+</div>
+<!-- Filter Tabs (Horizontal Scrollable) -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-nowrap">
+<button class="px-3.5 py-2 rounded-full font-label-md text-label-md bg-primary-container text-on-primary shadow-sm flex items-center gap-1.5 transition-all">
+<span>Tutte le chat</span>
+<span class="px-1.5 py-0.2 rounded-full bg-secondary-container text-on-secondary font-label-sm text-[11px] font-bold">8</span>
+</button>
+<button class="px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-card text-on-surface-variant hover:text-on-surface shadow-sm flex items-center gap-1.5 transition-all">
+<span>In attesa risposta</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[11px] font-bold">3</span>
+</button>
+<button class="px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-card text-on-surface-variant hover:text-on-surface shadow-sm flex items-center gap-1.5 transition-all">
+<span>Preventivi letti</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-[11px] font-bold">4</span>
+</button>
+<button class="px-3.5 py-2 rounded-full font-label-md text-label-md bg-surface-card text-on-surface-variant hover:text-on-surface shadow-sm flex items-center gap-1.5 transition-all">
+<span>Approvati</span>
+<span class="px-1.5 py-0.2 rounded-full bg-status-success/15 text-status-success font-label-sm text-[11px] font-bold">1</span>
+</button>
+</div>
+</section>
+<!-- Feed Title & Counters -->
+<div class="flex items-center justify-between px-0.5">
+<span class="font-label-md text-label-md text-text-muted uppercase tracking-wider">Feed Interazioni Dirette</span>
+<span class="font-label-sm text-label-sm text-status-success flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-status-success animate-ping"></span>
+      3 canali caldi
+    </span>
+</div>
+<!-- Chat Log Items -->
+<div class="flex flex-col gap-space-md w-full">
+<!-- Item 1: FOCUSED (Marco Bellini) -->
+<article class="w-full bg-surface-card rounded-xl p-space-md shadow-md flex flex-col gap-3 relative">
+<!-- Client Header -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="relative shrink-0">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Close up portrait photograph of an Italian homeowner in his forties with warm friendly eyes against a clean modern home interior background with natural soft day lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhl_IJ7_c43dfSkItA1Dy0CGRLJOqHHpbK4ChZjf2lOEpFsKppqvl7v-emf4xdgpPtZ2gZDQlY2lKpkuwkX94TReXBo52I9DLFiFIBY5yQRJmKvDP-TbJkCY5StG_7zYMkIEPheMo4SYlBcmbCTrMh6PpNvgV_DtC4USDsesloQfWEaXG2Qcp2B2xobq8YyO3lPpjvnId83yraKxqpUc2XeYalUpiGIlGVPb0RRk_g"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-status-success flex items-center justify-center">
+<span class="w-2 h-2 rounded-full bg-surface-card"></span>
+</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate font-bold">Marco Bellini</h2>
+<span class="shrink-0 material-symbols-outlined text-[#34B7F1] text-base" title="Verificato">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted tracking-tight">+39 348 123 4567</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm text-text-muted">Oggi, 14:22</span>
+<!-- WhatsApp Dual Blue Checkmark -->
+<div class="flex items-center gap-1 mt-0.5 text-[#34B7F1]">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 16 16">
+<path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.376.13.507-.023l6.242-8.083a.418.418 0 0 0-.057-.491z"></path>
+<path d="M10.96 3.316l-.478-.372a.365.365 0 0 0-.51.063L4.616 9.879a.32.32 0 0 1-.484.033L1.93 7.876a.365.365 0 0 0-.51.063l-.478.618a.418.418 0 0 0 .057.49l2.795 2.68c.143.14.376.13.507-.023l6.716-8.083a.418.418 0 0 0-.057-.491z"></path>
+</svg>
+<span class="font-label-sm text-label-sm font-semibold">Letto</span>
+</div>
+</div>
+</div>
+<!-- Status Indicator Pill -->
+<div class="flex items-center justify-between bg-surface-container-low px-3 py-2 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#34B7F1]"></span>
+<span class="font-label-md text-label-md text-on-surface">Preventivo Ricevuto e Letto</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">14 min fa</span>
+</div>
+<!-- Authentic WhatsApp Message Preview Bubble -->
+<div class="w-full bg-[#E7FCE8] text-[#111B21] rounded-xl rounded-tr-none p-3.5 relative shadow-sm">
+<div class="flex items-center justify-between pb-1 mb-1.5 opacity-70">
+<span class="font-label-sm text-label-sm font-bold text-on-tertiary-fixed-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">schedule_send</span> Invio Automatico WhatsApp
+          </span>
+<span class="font-label-sm text-label-sm text-text-muted">Preventivo #84-MB</span>
+</div>
+<p class="font-body-md text-body-md leading-relaxed text-on-surface">
+          “Ciao Marco! Ecco il preventivo dettagliato per la <strong>Ristrutturazione Bagno</strong> (<span class="font-headline-sm text-label-lg font-bold text-secondary">€4.818,00 IVA incl.</span>). Puoi confermarlo direttamente cliccando qui: <span class="text-[#008069] underline font-semibold cursor-pointer">casalavoro.pro/p/84-mb</span>. Resto a disposizione per qualsiasi chiarimento! - Artigiano Tiziano Rossi”
+        </p>
+<div class="flex justify-end items-center gap-1 mt-1 text-[#34B7F1]">
+<span class="font-label-sm text-[10px] text-text-muted">14:22</span>
+<svg class="w-3.5 h-3.5 fill-current" viewbox="0 0 16 16">
+<path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.376.13.507-.023l6.242-8.083a.418.418 0 0 0-.057-.491z"></path>
+<path d="M10.96 3.316l-.478-.372a.365.365 0 0 0-.51.063L4.616 9.879a.32.32 0 0 1-.484.033L1.93 7.876a.365.365 0 0 0-.51.063l-.478.618a.418.418 0 0 0 .057.49l2.795 2.68c.143.14.376.13.507-.023l6.716-8.083a.418.418 0 0 0-.057-.491z"></path>
+</svg>
+</div>
+</div>
+<!-- Interactive Follow-up Action Templates Title -->
+<div class="flex items-center justify-between pt-1">
+<span class="font-label-sm text-label-sm text-text-muted uppercase tracking-wider font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm text-secondary-container">auto_awesome</span>
+          Azioni Rapide Follow-Up
+        </span>
+<span class="font-label-sm text-label-sm text-secondary-container font-semibold">Tocca per inviare</span>
+</div>
+<!-- Quick Reply Pill Buttons (Horizontal Scrollable) -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar text-nowrap">
+<!-- Template 1 -->
+<button class="flex items-center gap-2 px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-left transition-transform active:scale-95 shrink-0" onclick="alert('Messaggio WhatsApp preparato: Ciao Marco, hai avuto modo di dare un\'occhiata al preventivo?')">
+<span class="material-symbols-outlined text-secondary-container text-base">forum</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold">Sollecita con cortesia</span>
+<span class="font-body-sm text-[11px] text-text-muted">‘Hai dato un’occhiata?’</span>
+</div>
+</button>
+<!-- Template 2 -->
+<button class="flex items-center gap-2 px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-left transition-transform active:scale-95 shrink-0" onclick="alert('Messaggio WhatsApp preparato: Ciao Marco, sono in zona giovedì mattina per un sopralluogo tecnico!')">
+<span class="material-symbols-outlined text-primary text-base">calendar_month</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold">Disponibilità sopralluogo</span>
+<span class="font-body-sm text-[11px] text-text-muted">‘In zona giovedì mattina’</span>
+</div>
+</button>
+<!-- Template 3 -->
+<button class="flex items-center gap-2 px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-left transition-transform active:scale-95 shrink-0" onclick="alert('Messaggio WhatsApp preparato: Ciao Marco, confermando entro venerdì ti riservo un 5% extra sull\'acconto!')">
+<span class="material-symbols-outlined text-status-warning text-base">percent</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold">Sconto acconto 5%</span>
+<span class="font-body-sm text-[11px] text-text-muted">‘Conferma entro venerdì’</span>
+</div>
+</button>
+<!-- Template 4 -->
+<button class="flex items-center gap-2 px-3 py-2 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface text-left transition-transform active:scale-95 shrink-0" onclick="alert('Messaggio WhatsApp preparato: Ciao Marco, ti andrebbe un breve confronto telefonico di 5 minuti?')">
+<span class="material-symbols-outlined text-status-success text-base">call</span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold">Richiedi chiamata</span>
+<span class="font-body-sm text-[11px] text-text-muted">‘Breve chiamata 5 min’</span>
+</div>
+</button>
+</div>
+<!-- Action Footer for Item 1 -->
+<div class="flex items-center gap-2 pt-2">
+<a class="flex-1 h-12 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-on-secondary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-sm transition-transform active:scale-98" href="https://wa.me/393481234567" target="_blank">
+<span class="material-symbols-outlined text-xl">chat</span>
+          Apri Chat WhatsApp
+        </a>
+<button class="w-12 h-12 rounded-xl bg-surface-container text-on-surface flex items-center justify-center transition-colors hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-xl">more_horiz</span>
+</button>
+</div>
+</article>
+<!-- Item 2: Elena Rossi (Delivered / Waiting for Read) -->
+<article class="w-full bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-full object-cover" data-alt="Studio portrait of an elegant Italian woman in casual business attire with warm light and minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaISBOrrCEqWaqHM9pU3f1vGJvCbwn_oqjItwNplSMJIjd_c9V2SfKaf08VPxepbWJOvBvb51GrpG3i_SIugAYzsij5xanOzRjHejVlecHg32AStqVwtNcvTn-_0aQvfXWJTU_x1tOKdi0jcRbekXzE0pacM4DKEEspYwVbtWK_spzIgBEMAgTQgEFjB_MEbqKtNzt2KL19amnFlVi0j0HnJ5FabjpSyWwlTkgFVdg"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-text-muted flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-card"></span>
+</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Elena Rossi</h2>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">Impianto Idraulico (€1.240)</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm text-text-muted">Oggi, 11:32</span>
+<!-- Double Grey Checkmarks (Delivered) -->
+<div class="flex items-center gap-1 mt-0.5 text-text-muted">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 16 16">
+<path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.376.13.507-.023l6.242-8.083a.418.418 0 0 0-.057-.491z"></path>
+<path d="M10.96 3.316l-.478-.372a.365.365 0 0 0-.51.063L4.616 9.879a.32.32 0 0 1-.484.033L1.93 7.876a.365.365 0 0 0-.51.063l-.478.618a.418.418 0 0 0 .057.49l2.795 2.68c.143.14.376.13.507-.023l6.716-8.083a.418.418 0 0 0-.057-.491z"></path>
+</svg>
+<span class="font-label-sm text-label-sm font-medium">Consegnato</span>
+</div>
+</div>
+</div>
+<!-- State description -->
+<div class="flex items-center justify-between text-on-surface-variant bg-surface-container-low px-3 py-2 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-base text-text-muted">mark_email_read</span>
+<span class="font-label-md text-label-md text-on-surface">In attesa di lettura</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">Inviato 3h fa</span>
+</div>
+<!-- Fast Action Button -->
+<div class="flex items-center justify-between gap-2 pt-1">
+<button class="w-full h-11 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-all" onclick="this.innerText = 'Promemoria Programmato!'; this.classList.add('bg-status-success', 'text-on-secondary');">
+<span class="material-symbols-outlined text-lg text-primary">alarm_add</span>
+          Invia promemoria domani mattina
+        </button>
+</div>
+</article>
+<!-- Item 3: Ing. Roberto Colombo (Approved & Confirmed) -->
+<article class="w-full bg-surface-card rounded-xl p-space-md shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-3 min-w-0">
+<div class="relative shrink-0">
+<img class="w-11 h-11 rounded-full object-cover" data-alt="Professional headshot of a mature Italian architect engineer with salt and pepper hair smiling confident in a bright architectural firm studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlGds1t9odHch9pTNhkNFn8T8mj7Am559fmlTAeY66vrDxNp4iSZ7moScnogF4iVQKffTCzpuWOZIDNK63QkwT7MC68J8T49mFzfA0MowbRauV6783Db_qeN04D_VG9nZe6WUumQDfWfRTKQgkFd4--go7LgCKdiceJopVmvrKEdtmN6dmSuZWnDw3un6BJaXAlsXXv-GXhvqYiZOSOG-3wvRSP34DC1CTZyzGu2WR"/>
+<span class="absolute bottom-0 right-0 w-3 h-3 rounded-full bg-status-success flex items-center justify-center">
+<span class="w-1.5 h-1.5 rounded-full bg-surface-card"></span>
+</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Ing. Roberto Colombo</h2>
+<span class="material-symbols-outlined text-status-success text-base" style="font-variation-settings: 'FILL' 1;">task_alt</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">Posa Parquet Rovere (€6.500)</span>
+</div>
+</div>
+<div class="flex flex-col items-end shrink-0">
+<span class="font-label-sm text-label-sm text-text-muted">Ieri, 18:45</span>
+<div class="flex items-center gap-1 mt-0.5 text-[#34B7F1]">
+<svg class="w-4 h-4 fill-current" viewbox="0 0 16 16">
+<path d="M15.01 3.316l-.478-.372a.365.365 0 0 0-.51.063L8.666 9.879a.32.32 0 0 1-.484.033l-.358-.325a.319.319 0 0 0-.484.032l-.378.483a.418.418 0 0 0 .036.541l1.32 1.266c.143.14.376.13.507-.023l6.242-8.083a.418.418 0 0 0-.057-.491z"></path>
+<path d="M10.96 3.316l-.478-.372a.365.365 0 0 0-.51.063L4.616 9.879a.32.32 0 0 1-.484.033L1.93 7.876a.365.365 0 0 0-.51.063l-.478.618a.418.418 0 0 0 .057.49l2.795 2.68c.143.14.376.13.507-.023l6.716-8.083a.418.418 0 0 0-.057-.491z"></path>
+</svg>
+<span class="font-label-sm text-label-sm font-semibold">Letto</span>
+</div>
+</div>
+</div>
+<!-- Approved Badge -->
+<div class="flex items-center gap-2 bg-status-success/10 px-3 py-2 rounded-lg text-status-success">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-md text-label-md font-bold">Confermato e Approvato via WhatsApp</span>
+</div>
+<!-- Client reply quotation -->
+<div class="p-3 bg-surface-container-low rounded-lg">
+<p class="font-body-sm text-body-sm text-on-surface italic">
+          “Perfetto Tiziano, procediamo con le date concordate. A presto!”
+        </p>
+</div>
+<!-- Next action -->
+<button class="w-full h-11 rounded-xl bg-primary text-on-primary font-label-md text-label-md font-semibold flex items-center justify-center gap-2 transition-transform active:scale-98" onclick="alert('Apertura generatore ricevuta per acconto €1.950,00')">
+<span class="material-symbols-outlined text-lg">receipt_long</span>
+        Invia Ricevuta Acconto via WhatsApp
+      </button>
+</article>
+</div>
+<!-- Bottom Helper Information -->
+<div class="flex items-center justify-center gap-2 pt-2 text-text-muted">
+<span class="material-symbols-outlined text-base">lock</span>
+<span class="font-body-sm text-body-sm text-center">Tutti i link dei preventivi sono crittografati e protetti da PIN</span>
+</div>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-primary-container/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.12)]" data-active-classes="text-on-primary bg-primary"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[72px] h-12 rounded-xl text-on-primary-container hover:text-on-primary transition-all duration-150" data-path="dashboard" href="#"><span class="material-symbols-outlined text-2xl">dashboard</span><span class="font-label-sm text-label-sm">Dashboard</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[72px] h-12 rounded-xl text-on-primary-container hover:text-on-primary transition-all duration-150 relative" data-path="nuovo-preventivo" href="#"><span class="material-symbols-outlined text-2xl">post_add</span><span class="font-label-sm text-label-sm">Preventivo</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-0.5 min-w-[72px] h-12 rounded-xl transition-all duration-150 relative text-on-primary bg-primary" data-path="whatsapp-hub" href="#"><div class="relative"><span class="material-symbols-outlined text-2xl">chat</span><span class="absolute -top-1 -right-1.5 px-1 py-0.2 rounded-full bg-secondary-container text-on-secondary font-label-sm text-[10px] leading-tight font-bold">3</span></div><span class="font-label-sm text-label-sm">WhatsApp</span></a></div></nav></body></html>

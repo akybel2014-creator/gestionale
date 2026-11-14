@@ -1,0 +1,561 @@
+<!DOCTYPE html><html lang="it"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"><meta content="mobile_tab" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{width:100vw;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary-container": "#8691a2", "tertiary": "#001a06", "inverse-surface": "#2d3133", "surface-card": "#FFFFFF", "outline": "#75777c", "surface-bright": "#f7f9fb", "secondary": "#b02f00", "on-secondary-fixed": "#3b0900", "primary-container": "#1f2a38", "surface-dim": "#d8dadc", "on-error-container": "#93000a", "on-surface-variant": "#44474c", "secondary-fixed-dim": "#ffb5a0", "surface-container-lowest": "#ffffff", "text-muted": "#64748B", "error-container": "#ffdad6", "on-secondary": "#ffffff", "primary": "#0a1623", "surface-variant": "#e0e3e5", "on-primary-fixed-variant": "#3d4857", "inverse-primary": "#bcc7da", "error": "#ba1a1a", "border-slate": "#E2E8F0", "secondary-container": "#ff5722", "on-primary": "#ffffff", "status-success": "#16A34A", "primary-fixed": "#d8e3f6", "surface-container": "#eceef0", "on-tertiary-fixed-variant": "#005322", "primary-fixed-dim": "#bcc7da", "on-tertiary-container": "#00a74c", "secondary-fixed": "#ffdbd1", "surface-tint": "#545f6f", "surface-container-highest": "#e0e3e5", "surface-container-high": "#e6e8ea", "on-error": "#ffffff", "on-primary-fixed": "#111c2a", "tertiary-fixed-dim": "#3de273", "surface-container-low": "#f2f4f6", "on-secondary-fixed-variant": "#862200", "inverse-on-surface": "#eff1f3", "tertiary-fixed": "#66ff8e", "background": "#f7f9fb", "surface": "#f7f9fb", "on-tertiary": "#ffffff", "status-warning": "#F59E0B", "on-tertiary-fixed": "#002109", "on-background": "#191c1e", "outline-variant": "#c5c6cc", "status-danger": "#DC2626", "on-secondary-container": "#541100", "tertiary-container": "#003111", "on-surface": "#191c1e" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-sm": "0.5rem", "space-xl": "2rem", "margin": "1rem", "gutter": "1rem", "space-md": "1rem", "space-lg": "1.5rem", "margin-desktop": "2rem", "gutter-desktop": "1.5rem", "space-xs": "0.25rem" }, fontFamily: { "headline-md": ["Outfit"], "body-sm": ["Plus Jakarta Sans"], "label-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "display-hero-mobile": ["Outfit"], "headline-lg": ["Outfit"], "numeric-currency-md": ["Outfit"], "body-md": ["Plus Jakarta Sans"], "label-sm": ["Plus Jakarta Sans"], "display-hero": ["Outfit"], "headline-sm": ["Outfit"], "numeric-currency-lg": ["Outfit"] }, fontSize: { "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "label-lg": ["15px", { "lineHeight": "20px", "fontWeight": "600" }], "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "600" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "display-hero-mobile": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "numeric-currency-md": ["20px", { "lineHeight": "24px", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }], "display-hero": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "600" }], "numeric-currency-lg": ["28px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700" }] } } } };</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head><body class="bg-surface font-body-md text-on-surface flex flex-col min-h-screen"><header class="fixed top-0 inset-x-0 z-50 bg-primary-container/95 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.08)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="CasaLavoroPRO Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VoeN0fXByyE2abwyO6qXNO9a6Q4IOXCdYUX0ctGhI68hM8krkh8gSTYNguhZV9_4ZhOg8bLTH4DbDkErBFH6zGC85_iA8HuhB7LMBfwGcM3_xMjySMyqLZLeFARJfEq9XUHkw5tsa5yXuRf5npiheU_rR4TcG7eY9jYt6tOOCqj_SHQyLJQqG01mUvBEMRVqpgh4YTqM85mqW3Alx_onw6VppiFn7MtEH_04DBFLG7"><div class="flex items-center gap-1.5"><span class="font-headline-sm text-headline-sm text-on-primary tracking-tight font-bold">CasaLavoro</span><span class="px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary font-label-sm text-label-sm tracking-wider uppercase font-bold">PRO</span></div></div><div class="flex items-center gap-space-sm"><button aria-label="Notifiche" class="w-11 h-11 flex items-center justify-center rounded-full text-on-primary-container hover:text-on-primary relative transition-colors"><span class="material-symbols-outlined text-xl">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary-container"></span></button><div class="relative flex items-center justify-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzkxWSjK4FxyAN3fvcXuQ0qWFy2DR0RCllygccN7WB6S3iBZpSxXpYdqlBnApYTDlygIt7luwGLrldCwOaNub2XJaNMM6-mXk9ULKnVSSBYo2c1dpLQvdmgfKNrzaEMlC-sviwZ7II7NCHUL6zlSqhiutybQuomDUgQj50L6T7ITPrpP4OD5GTmuTWeXr4ClOTv_0aCvWcYsD5lxDQh9cTp99xtPos97afzjhAnDdF"><span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-status-success"></span></div></div></div><div class="px-margin pb-2 flex items-center justify-between"><h1 class="font-headline-md text-headline-md text-on-primary truncate">Listini &amp; Iva</h1><span class="flex items-center gap-1 font-label-sm text-label-sm text-on-primary-container"><span class="w-1.5 h-1.5 rounded-full bg-status-success animate-pulse"></span>Sync attivo</span></div></header><main class="flex flex-col relative w-full pt-28 pb-28 px-margin bg-surface flex-1"><div class="flex flex-col w-full pb-8 space-y-5">
+<!-- Status & Quick Switch Header Banner -->
+<div class="bg-surface-card rounded-xl p-4 shadow-sm flex flex-col gap-3">
+<div class="flex items-start justify-between gap-2">
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-text-muted uppercase tracking-wider">Tariffario Attivo 2025</span>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="material-symbols-outlined text-secondary-container text-xl">dataset</span>
+<h2 class="font-headline-sm text-headline-sm text-primary-container truncate font-bold">Edilizia &amp; Termoidraulica</h2>
+</div>
+</div>
+<button class="flex items-center gap-1 bg-secondary-container text-on-secondary px-3 py-2 rounded-lg font-label-md text-label-md shadow-sm active:scale-95 transition-all" id="btn-add-item">
+<span class="material-symbols-outlined text-base">add</span>
+<span class="">Voce</span>
+</button>
+</div>
+<div class="flex items-center justify-between pt-2">
+<div class="flex items-center gap-1.5 bg-status-success/10 px-2.5 py-1 rounded-full">
+<span class="w-2 h-2 rounded-full bg-status-success animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-status-success font-semibold">Sincronizzato col Preventivatore</span>
+</div>
+<button class="flex items-center gap-1 text-primary-container font-label-sm text-label-sm hover:underline">
+<span class="">Cambia Listino</span>
+<span class="material-symbols-outlined text-sm">unfold_more</span>
+</button>
+</div>
+</div>
+<!-- Micro Delight Toast Notification (Hidden by default) -->
+<div class="hidden bg-primary-container text-on-primary px-4 py-2.5 rounded-xl shadow-lg flex items-center justify-between" id="save-toast">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-success">check_circle</span>
+<span class="font-label-md text-label-md">Tariffario aggiornato con successo!</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-primary-container">Ora attivo</span>
+</div>
+<!-- SEZIONE 1: Aliquote IVA & Agevolazioni Fiscali -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-xl">percent</span>
+<h3 class="font-headline-sm text-headline-sm text-primary-container">Aliquote IVA &amp; Agevolazioni</h3>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted">Normativa DPR 633/72</span>
+</div>
+<!-- IVA Option Cards Group -->
+<div class="space-y-2.5" id="vat-selector-group">
+<!-- 10% Ristrutturazioni (Selected Default) -->
+<div class="vat-card bg-surface-card rounded-xl p-3.5 shadow-sm transition-all cursor-pointer relative overflow-hidden" data-vat="10">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary-container"></div>
+<div class="pl-2 flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center mt-0.5 shrink-0">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary-container font-bold">IVA 10%</span>
+<span class="bg-secondary-container/15 text-secondary-container px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Più Usata</span>
+<span class="bg-surface-container text-text-muted px-1.5 py-0.5 rounded font-label-sm text-[10px]">Default Privati</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5 font-medium">Ristrutturazioni, Restauro &amp; Recupero Edilizio</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Manutenzione ordinaria/straordinaria su immobili a destinazione abitativa.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 22% Ordinaria -->
+<div class="vat-card bg-surface-card rounded-xl p-3.5 shadow-sm transition-all cursor-pointer relative overflow-hidden" data-vat="22">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-transparent"></div>
+<div class="pl-2 flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center mt-0.5 shrink-0 text-transparent check-icon">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary-container font-bold">IVA 22%</span>
+<span class="font-label-sm text-label-sm text-text-muted">Aliquota Ordinaria</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5 font-medium">Nuove Costruzioni &amp; Impianti Commerciali</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Applicabile anche per beni significativi eccedenti la quota manodopera.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 4% Prima Casa -->
+<div class="vat-card bg-surface-card rounded-xl p-3.5 shadow-sm transition-all cursor-pointer relative overflow-hidden" data-vat="4">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-transparent"></div>
+<div class="pl-2 flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center mt-0.5 shrink-0 text-transparent check-icon">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary-container font-bold">IVA 4%</span>
+<span class="bg-surface-container text-text-muted px-2 py-0.5 rounded font-label-sm text-label-sm">Agevolata</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5 font-medium">Prima Casa &amp; Barriere Architettoniche</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Costruzione prima casa, rampe, ascensori e ausili per disabilità.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Reverse Charge (0%) -->
+<div class="vat-card bg-surface-card rounded-xl p-3.5 shadow-sm transition-all cursor-pointer relative overflow-hidden" data-vat="0">
+<div class="absolute left-0 top-0 bottom-0 w-1.5 bg-transparent"></div>
+<div class="pl-2 flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5">
+<div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center mt-0.5 shrink-0 text-transparent check-icon">
+<span class="material-symbols-outlined text-sm">check</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-primary-container font-bold">Reverse Charge (0%)</span>
+<span class="bg-primary-container/10 text-primary-container px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold">B2B Cantieri</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5 font-medium">Inversione Contabile Art. 17 c.6 lett. a-ter</p>
+<p class="font-body-sm text-body-sm text-text-muted mt-0.5">Subappalto edile, posa infissi e impiantistica verso imprese o general contractor.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Automazioni Fiscali Smart Toggle Box -->
+<div class="bg-surface-card rounded-xl p-4 shadow-sm space-y-3 mt-1">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary-container text-xl mt-0.5">calculate</span>
+<div>
+<span class="font-label-lg text-label-lg text-primary-container">Scorporo Beni Significativi</span>
+<p class="font-body-sm text-body-sm text-text-muted">Calcola in automatico la quota IVA 10% vs 22% su caldaie, infissi e sanitari di pregio.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="toggle-beni" type="checkbox">
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+</label>
+</div>
+<div class="w-full h-px bg-surface-container"></div>
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-start gap-2.5">
+<span class="material-symbols-outlined text-primary-container text-xl mt-0.5">description</span>
+<div>
+<span class="font-label-lg text-label-lg text-primary-container">Note Legge in calce (WhatsApp &amp; PDF)</span>
+<p class="font-body-sm text-body-sm text-text-muted">Inserisce le diciture obbligatorie di conformità fiscale sui messaggi inviati al cliente.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="toggle-note" type="checkbox">
+<div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+</label>
+</div>
+</div>
+</section><!-- SEZIONE 1.5: Detrazioni & Sgravi Fiscali Edilizi -->
+<section class="flex flex-col gap-3">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-secondary-container text-xl">savings</span>
+      <h3 class="font-headline-sm text-headline-sm text-primary-container font-bold">Detrazioni &amp; Bonus Edilizi</h3>
+    </div>
+    <span class="bg-secondary-container/15 text-secondary-container px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Agevolazioni 2025</span>
+  </div>
+
+  <!-- Incentives Cards Selector -->
+  <div class="space-y-2.5" id="bonus-selector-group">
+    <!-- Bonus Casa 50% -->
+    <div class="bonus-card bg-surface-card rounded-xl p-3.5 shadow-sm transition-all cursor-pointer relative overflow-hidden">
+      <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-secondary-container"></div>
+      <div class="pl-2 flex items-start justify-between gap-2">
+        <div class="flex items-start gap-2.5">
+          <div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center mt-0.5 shrink-0">
+            <span class="material-symbols-outlined text-sm">check</span>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-headline-sm text-headline-sm text-primary-container font-bold">Bonus Casa 50%</span>
+              <span class="bg-secondary-container/15 text-secondary-container px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Ristrutturazione Edilizia</span>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-0.5 font-medium">Detrazione IRPEF in 10 quote annuali</p>
+            <p class="font-body-sm text-body-sm text-text-muted mt-0.5">Tetto massimale di spesa fino a €96.000 per unità immobiliare (art. 16-bis TUIR).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ecobonus 50% - 65% -->
+    <div class="bonus-card bg-surface-card rounded-xl p-3.5 shadow-sm transition-all cursor-pointer relative overflow-hidden">
+      <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-transparent"></div>
+      <div class="pl-2 flex items-start justify-between gap-2">
+        <div class="flex items-start gap-2.5">
+          <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center mt-0.5 shrink-0 text-transparent check-icon">
+            <span class="material-symbols-outlined text-sm">check</span>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-headline-sm text-headline-sm text-primary-container font-bold">Ecobonus 50% - 65%</span>
+              <span class="bg-status-success/15 text-status-success px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">Riqualificazione Energetica</span>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-0.5 font-medium">Pompe di calore, infissi, caldaie classe A &amp; schermature solari</p>
+            <p class="font-body-sm text-body-sm text-text-muted mt-0.5">Requisito salto classe energetica o miglioramento termico asseverato.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conto Termico 2.0 / GSE -->
+    <div class="bonus-card bg-surface-card rounded-xl p-3.5 shadow-sm transition-all cursor-pointer relative overflow-hidden">
+      <div class="absolute left-0 top-0 bottom-0 w-1.5 bg-transparent"></div>
+      <div class="pl-2 flex items-start justify-between gap-2">
+        <div class="flex items-start gap-2.5">
+          <div class="w-5 h-5 rounded-full bg-surface-container flex items-center justify-center mt-0.5 shrink-0 text-transparent check-icon">
+            <span class="material-symbols-outlined text-sm">check</span>
+          </div>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="font-headline-sm text-headline-sm text-primary-container font-bold">Conto Termico 2.0 (GSE)</span>
+              <span class="bg-primary-container/10 text-primary-container px-2 py-0.5 rounded font-label-sm text-label-sm font-semibold">Fondo Perduto Diretto</span>
+            </div>
+            <p class="font-body-md text-body-md text-on-surface-variant mt-0.5 font-medium">Sostituzione generatori di calore e climatizzazione invernale</p>
+            <p class="font-body-sm text-body-sm text-text-muted mt-0.5">Bonifico diretto sul conto corrente dal GSE (non richiede capienza fiscale).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Specifiche Documentali & Cantiere Sgravi -->
+  <div class="bg-surface-card rounded-xl p-4 shadow-sm space-y-3">
+    <!-- Bonifico Parlante Toggle -->
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex items-start gap-2.5">
+        <span class="material-symbols-outlined text-secondary-container text-xl mt-0.5">receipt_long</span>
+        <div>
+          <span class="font-label-lg text-label-lg text-primary-container font-semibold">Dicitura Bonifico Parlante nel Preventivo</span>
+          <p class="font-body-sm text-body-sm text-text-muted mt-0.5">Genera in automatico dicitura causale di legge, Codice Fiscale committente e P.IVA per agevolazioni art. 16-bis TUIR.</p>
+        </div>
+      </div>
+      <label class="relative inline-flex items-center cursor-pointer shrink-0">
+        <input checked="" class="sr-only peer" id="toggle-bonifico-parlante" type="checkbox">
+        <div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+      </label>
+    </div>
+
+    <div class="w-full h-px bg-surface-container"></div>
+
+    <!-- Pratica ENEA & Asseverazione -->
+    <div class="flex items-center justify-between gap-3">
+      <div class="flex items-start gap-2.5">
+        <span class="material-symbols-outlined text-primary-container text-xl mt-0.5">fact_check</span>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="font-label-lg text-label-lg text-primary-container font-semibold">Pratica ENEA &amp; Asseverazione Tecnica</span>
+            <span class="bg-status-success/10 text-status-success px-1.5 py-0.5 rounded font-label-sm text-[10px] font-bold">+€180</span>
+          </div>
+          <p class="font-body-sm text-body-sm text-text-muted mt-0.5">Aggiunge la voce automatica di gestione documentale telematica ENEA / portale GSE.</p>
+        </div>
+      </div>
+      <label class="relative inline-flex items-center cursor-pointer shrink-0">
+        <input checked="" class="sr-only peer" id="toggle-pratica-enea" type="checkbox">
+        <div class="w-11 h-6 bg-surface-container peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary-container"></div>
+      </label>
+    </div>
+
+    <div class="w-full h-px bg-surface-container"></div>
+
+    <!-- Massimale & Congruità Prezzi Note Badge -->
+    <div class="bg-primary-container/5 rounded-lg p-3 flex items-start gap-2.5">
+      <span class="material-symbols-outlined text-status-success text-xl shrink-0 mt-0.5">verified_user</span>
+      <div class="min-w-0">
+        <div class="flex items-center gap-1.5">
+          <span class="font-label-md text-label-md text-primary-container font-bold">Congruità Prezzi Prezziario DEI / Regionale</span>
+          <span class="bg-status-success/15 text-status-success px-1.5 py-0.2 rounded font-label-sm text-[10px] font-bold">Conforme</span>
+        </div>
+        <p class="font-body-sm text-body-sm text-text-muted mt-0.5">Tutte le voci del preventivo vengono validate rispetto ai massimali orari e ai listini ammessi per l'asseverazione fiscale del committente.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- SEZIONE 2: Tariffario Manodopera & Squadre -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-xl">engineering</span>
+<h3 class="font-headline-sm text-headline-sm text-primary-container">Manodopera &amp; Costo Orario</h3>
+</div>
+<span class="font-label-sm text-label-sm text-status-success font-semibold">Base Cantiere</span>
+</div>
+<!-- Labor Rate Cards Grid -->
+<div class="space-y-2.5">
+<!-- Operaio Specializzato / Caposquadra -->
+<div class="bg-surface-card rounded-xl p-3.5 shadow-sm flex items-center justify-between gap-2">
+<div class="min-w-0 pr-1">
+<span class="font-label-lg text-label-lg text-primary-container block truncate">Operaio Specializzato / Caposquadra</span>
+<span class="font-body-sm text-body-sm text-text-muted">Impiantista abilitato, capocantiere</span>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="rate-btn-minus w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container active:scale-95 text-lg font-bold" data-target="rate-spec">-</button>
+<div class="w-20 text-center">
+<div class="font-numeric-currency-md text-numeric-currency-md text-primary-container flex items-center justify-center">
+<span class="">€</span><span id="rate-spec" class="">35</span><span class="">,00</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted block text-[10px]">all'ora</span>
+</div>
+<button class="rate-btn-plus w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container active:scale-95 text-lg font-bold" data-target="rate-spec">+</button>
+</div>
+</div>
+<!-- Operaio Qualificato -->
+<div class="bg-surface-card rounded-xl p-3.5 shadow-sm flex items-center justify-between gap-2">
+<div class="min-w-0 pr-1">
+<span class="font-label-lg text-label-lg text-primary-container block truncate">Operaio Qualificato</span>
+<span class="font-body-sm text-body-sm text-text-muted">Muratore rifinitore, tubista, posatore</span>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="rate-btn-minus w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container active:scale-95 text-lg font-bold" data-target="rate-qual">-</button>
+<div class="w-20 text-center">
+<div class="font-numeric-currency-md text-numeric-currency-md text-primary-container flex items-center justify-center">
+<span class="">€</span><span id="rate-qual" class="">28</span><span class="">,00</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted block text-[10px]">all'ora</span>
+</div>
+<button class="rate-btn-plus w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container active:scale-95 text-lg font-bold" data-target="rate-qual">+</button>
+</div>
+</div>
+<!-- Manovale / Aiutante -->
+<div class="bg-surface-card rounded-xl p-3.5 shadow-sm flex items-center justify-between gap-2">
+<div class="min-w-0 pr-1">
+<span class="font-label-lg text-label-lg text-primary-container block truncate">Manovale / Aiutante</span>
+<span class="font-body-sm text-body-sm text-text-muted">Demolizioni, trasporto macerie, scarico</span>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="rate-btn-minus w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container active:scale-95 text-lg font-bold" data-target="rate-mano">-</button>
+<div class="w-20 text-center">
+<div class="font-numeric-currency-md text-numeric-currency-md text-primary-container flex items-center justify-center">
+<span class="">€</span><span id="rate-mano" class="">22</span><span class="">,00</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted block text-[10px]">all'ora</span>
+</div>
+<button class="rate-btn-plus w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container active:scale-95 text-lg font-bold" data-target="rate-mano">+</button>
+</div>
+</div>
+<!-- Diritto Fisso di Chiamata -->
+<div class="bg-surface-card rounded-xl p-3.5 shadow-sm flex items-center justify-between gap-2">
+<div class="min-w-0 pr-1">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-primary-container truncate">Diritto Fisso di Chiamata</span>
+<span class="bg-status-warning/15 text-status-warning px-1.5 py-0.5 rounded font-label-sm text-[10px] font-bold">Urgente</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted">Pronto intervento furgone attrezzato</span>
+</div>
+<div class="flex items-center gap-1.5 shrink-0">
+<button class="rate-btn-minus w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container active:scale-95 text-lg font-bold" data-target="rate-call">-</button>
+<div class="w-20 text-center">
+<div class="font-numeric-currency-md text-numeric-currency-md text-primary-container flex items-center justify-center">
+<span class="">€</span><span id="rate-call" class="">45</span><span class="">,00</span>
+</div>
+<span class="font-label-sm text-label-sm text-text-muted block text-[10px]">una tantum</span>
+</div>
+<button class="rate-btn-plus w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container active:scale-95 text-lg font-bold" data-target="rate-call">+</button>
+</div>
+</div>
+</div>
+<!-- Markup Badge Info -->
+<div class="bg-primary-container/5 rounded-xl p-3 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-lg">trending_up</span>
+<div>
+<span class="font-label-md text-label-md text-primary-container font-bold">Ricarico Spese Generali &amp; Utile</span>
+<p class="font-body-sm text-body-sm text-text-muted">Margine applicato su materiali e manodopera</p>
+</div>
+</div>
+<div class="bg-surface-card px-2.5 py-1 rounded-lg shadow-sm font-label-lg text-label-lg text-secondary-container font-bold">
+        +15%
+      </div>
+</div>
+</section>
+<!-- SEZIONE 3: Cataloghi & Prezziari Collegati -->
+<section class="flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-container text-xl">inventory_2</span>
+<h3 class="font-headline-sm text-headline-sm text-primary-container">Listini Materiali &amp; Prezziari</h3>
+</div>
+<span class="bg-surface-container text-primary-container px-2 py-0.5 rounded font-label-sm text-label-sm font-bold">3 Attivi</span>
+</div>
+<div class="space-y-2.5">
+<!-- Prezziario Regionale DEI 2025 -->
+<div class="bg-surface-card rounded-xl p-3.5 shadow-sm flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-status-success/15 flex items-center justify-center text-status-success shrink-0">
+<span class="material-symbols-outlined">menu_book</span>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-label-lg text-label-lg text-primary-container truncate font-bold">Prezziario Regionale Opere Edili</span>
+<span class="material-symbols-outlined text-status-success text-base" title="Sincronizzato">check_circle</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted truncate">DEI / Regionale 2025 ufficiale • Aggiornamento automatico</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="font-label-sm text-label-sm bg-status-success/10 text-status-success px-2 py-0.5 rounded-full font-semibold">Collegato</span>
+</div>
+</div>
+<!-- Idraulica & Sanitari -->
+<div class="bg-surface-card rounded-xl p-3.5 shadow-sm flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined">plumbing</span>
+</div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-primary-container truncate font-bold">Forniture Idrauliche &amp; Sanitari</span>
+<p class="font-body-sm text-body-sm text-text-muted">240 voci caricate • Ultimo agg. 3 gg fa</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-text-muted active:scale-95 shrink-0">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+<!-- Ceramiche & Pavimenti -->
+<div class="bg-surface-card rounded-xl p-3.5 shadow-sm flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<div class="min-w-0">
+<span class="font-label-lg text-label-lg text-primary-container truncate font-bold">Ceramiche &amp; Gres Porcellanato</span>
+<p class="font-body-sm text-body-sm text-text-muted">85 voci caricate • Listino rivenditore</p>
+</div>
+</div>
+<button class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-text-muted active:scale-95 shrink-0">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+<!-- Quick Import Action Strip -->
+<div class="bg-surface-container-low rounded-xl p-3 flex items-center justify-between gap-3">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-lg bg-secondary-container/10 flex items-center justify-center text-secondary-container shrink-0">
+<span class="material-symbols-outlined">document_scanner</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-primary-container block">Importa Listino Fornitore</span>
+<span class="font-body-sm text-body-sm text-text-muted">Scatta foto a fattura/preventivo OCR o carica CSV</span>
+</div>
+</div>
+<button class="flex items-center gap-1 bg-surface-card px-3 py-2 rounded-lg shadow-sm font-label-md text-label-md text-primary-container active:scale-95 shrink-0">
+<span class="material-symbols-outlined text-base">upload_file</span>
+<span class="">Carica</span>
+</button>
+</div>
+</section>
+<!-- SEZIONE 4: Salva & Ripristina -->
+<div class="pt-2 space-y-3">
+<!-- Primary CTA: Save to Quote Engine -->
+<button class="w-full h-12 bg-secondary-container text-on-secondary rounded-xl font-label-lg text-label-lg shadow-md flex items-center justify-center gap-2 active:scale-98 transition-transform" id="btn-save-rates">
+<span class="material-symbols-outlined text-xl">sync_saved_locally</span>
+<span class="">Salva e Aggiorna Preventivatore</span>
+</button>
+<!-- Secondary CTA: Reset to CasaLavoroPRO Defaults -->
+<button class="w-full py-2.5 text-center font-label-md text-label-md text-text-muted hover:text-primary-container transition-colors flex items-center justify-center gap-1.5" id="btn-reset-rates">
+<span class="material-symbols-outlined text-base">restart_alt</span>
+<span class="">Ripristina Valori Standard CasaLavoroPRO</span>
+</button>
+</div>
+</div>
+<script>
+  (function() {
+    // VAT Selector Interactive Behavior
+    const vatCards = document.querySelectorAll('#vat-selector-group .vat-card');
+    vatCards.forEach(card => {
+      card.addEventListener('click', () => {
+        vatCards.forEach(c => {
+          const bar = c.querySelector('.absolute');
+          const iconContainer = c.querySelector('.w-5');
+          bar.className = 'absolute left-0 top-0 bottom-0 w-1.5 bg-transparent';
+          iconContainer.className = 'w-5 h-5 rounded-full bg-surface-container flex items-center justify-center mt-0.5 shrink-0 text-transparent check-icon';
+        });
+        const activeBar = card.querySelector('.absolute');
+        const activeIcon = card.querySelector('.w-5');
+        activeBar.className = 'absolute left-0 top-0 bottom-0 w-1.5 bg-secondary-container';
+        activeIcon.className = 'w-5 h-5 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center mt-0.5 shrink-0';
+      });
+    });
+
+    // Labor Rates Stepper Functionality
+    document.querySelectorAll('.rate-btn-plus').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetId = btn.getAttribute('data-target');
+        const span = document.getElementById(targetId);
+        if (span) {
+          let val = parseInt(span.innerText, 10);
+          val += 1;
+          span.innerText = val;
+        }
+      });
+    });
+
+    document.querySelectorAll('.rate-btn-minus').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const targetId = btn.getAttribute('data-target');
+        const span = document.getElementById(targetId);
+        if (span) {
+          let val = parseInt(span.innerText, 10);
+          if (val > 5) {
+            val -= 1;
+            span.innerText = val;
+          }
+        }
+      });
+    });
+
+    // Save Button Feedback Toast
+    const saveBtn = document.getElementById('btn-save-rates');
+    const toast = document.getElementById('save-toast');
+    if (saveBtn && toast) {
+      saveBtn.addEventListener('click', () => {
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+        }, 3500);
+      });
+    }
+
+    // Reset Defaults Feedback
+    const resetBtn = document.getElementById('btn-reset-rates');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        const spec = document.getElementById('rate-spec');
+        const qual = document.getElementById('rate-qual');
+        const mano = document.getElementById('rate-mano');
+        const call = document.getElementById('rate-call');
+        if (spec) spec.innerText = "35";
+        if (qual) qual.innerText = "28";
+        if (mano) mano.innerText = "22";
+        if (call) call.innerText = "45";
+
+        toast.querySelector('.font-label-md').innerText = "Valori ripristinati agli standard di settore!";
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+          toast.querySelector('.font-label-md').innerText = "Tariffario aggiornato con successo!";
+        }, 3000);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-primary-container/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(0,0,0,0.12)]" data-active-classes="text-on-primary bg-primary"><div class="flex items-center justify-around h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] h-12 rounded-xl text-on-primary-container hover:text-on-primary transition-all duration-150 relative" data-path="dashboard-preventivi" href="#"><span class="material-symbols-outlined text-2xl">dashboard</span><span class="font-label-sm text-label-sm">Dashboard</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] h-12 rounded-xl text-on-primary-container hover:text-on-primary transition-all duration-150 relative" data-path="preventivatore-dettagliato" href="#"><span class="material-symbols-outlined text-2xl">post_add</span><span class="font-label-sm text-label-sm">Preventivo</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] h-12 rounded-xl text-on-primary-container hover:text-on-primary transition-all duration-150 relative" data-path="whatsapp-messaging-hub" href="#"><div class="relative"><span class="material-symbols-outlined text-2xl">chat</span><span class="absolute -top-1 -right-1.5 px-1 py-0.2 rounded-full bg-secondary-container text-on-secondary font-label-sm text-[10px] leading-tight font-bold">3</span></div><span class="font-label-sm text-label-sm">WhatsApp</span></a><a class="flex flex-col items-center justify-center gap-0.5 min-w-[64px] h-12 rounded-xl text-on-primary-container hover:text-on-primary transition-all duration-150 relative" data-path="listini-iva" href="#"><span class="material-symbols-outlined text-2xl">tune</span><span class="font-label-sm text-label-sm">Listini &amp; IVA</span></a></div></nav>
+
+</body></html>
