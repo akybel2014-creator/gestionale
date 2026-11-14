@@ -1,6 +1,7 @@
-import { createContext, useCallback, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 import { clearStoredTokens } from "@/lib/api";
+import { evaluateTrialState, normalizeSubscriptionStatus, saveLocalTrialRecord } from "@/stitch/trialService";
 
 const AuthCtx = createContext(null);
 
@@ -16,6 +17,8 @@ function normalizeAziendaRow(row) {
         zone: Array.isArray(row.zone) ? row.zone : [],
         verified: row.verificata !== undefined ? Boolean(row.verificata) : Boolean(row.verified),
         plan: row.piano || row.plan || "free",
+        subscription_status: normalizeSubscriptionStatus(row.subscription_status || (row.piano === "pro" ? "active" : "trial")),
+        created_at: row.created_at || null,
         recensioni: Number(row.recensioni_count ?? row.recensioni ?? 0),
         rating: Number(row.rating) || 0,
     };
@@ -65,16 +68,12 @@ export function AuthProvider({ children }) {
 
         const meta = authUser.user_metadata || {};
         const role = profile?.role || meta.role || "privato";
-        const name = profile?.name || meta.name || (authUser.email ? authUser.email.split("@")[0] : "Utente");
-
-        const userObj = {
-            id: authUser.id,
-            email: profile?.email || authUser.email,
-            name,
-            role,
-            telefono: profile?.telefono || "",
-            avatar_url: profile?.avatar_url || null,
-        };
+        const name =
+            profile?.name ||
+            meta.full_name ||
+            meta.name ||
+            (authUser.email ? authUser.email.split("@")[0] : "Utente");
+        const createdAt = profile?.created_at || authUser.created_at || new Date().toISOString();
 
         let aziendaObj = null;
         if (role === "azienda") {
@@ -91,6 +90,34 @@ export function AuthProvider({ children }) {
                 /* ignora */
             }
         }
+
+        const rawStatus =
+            profile?.subscription_status ||
+            aziendaObj?.subscription_status ||
+            meta.subscription_status ||
+            "trial";
+        const trialEval = evaluateTrialState({
+            created_at: createdAt,
+            subscription_status: rawStatus,
+        });
+
+        const userObj = {
+            id: authUser.id,
+            email: profile?.email || authUser.email,
+            name,
+            role,
+            telefono: profile?.telefono || meta.telefono || "",
+            avatar_url: profile?.avatar_url || null,
+            created_at: createdAt,
+            subscription_status: trialEval.subscriptionStatus,
+        };
+
+        saveLocalTrialRecord({
+            created_at: createdAt,
+            subscription_status: trialEval.subscriptionStatus,
+            email: userObj.email,
+            name: userObj.name,
+        });
 
         setUser(userObj);
         setAzienda(aziendaObj);
@@ -152,6 +179,7 @@ export function AuthProvider({ children }) {
         const role = payload?.ruolo === "azienda" ? "azienda" : "privato";
         const azIn = payload?.azienda || null;
 
+        const registrationTime = new Date().toISOString();
         const { data, error } = await supabase.auth.signUp({
             email: cleanEmail,
             password: payload.password,
@@ -159,6 +187,8 @@ export function AuthProvider({ children }) {
                 data: {
                     name: cleanName,
                     role,
+                    subscription_status: "trial",
+                    created_at: registrationTime,
                     azienda: role === "azienda" ? {
                         nome: (azIn?.nome || cleanName).trim(),
                         categorie: Array.isArray(azIn?.categorie) && azIn.categorie.length > 0 ? azIn.categorie : ["Altri Servizi"],
@@ -224,11 +254,20 @@ export function AuthProvider({ children }) {
         }
 
         // Se la conferma email su Supabase è ancora attiva, il trigger SQL ha comunque creato profile + azienda
+        saveLocalTrialRecord({
+            created_at: authUser.created_at || registrationTime,
+            subscription_status: "trial",
+            email: cleanEmail,
+            name: cleanName,
+        });
+
         const optimisticUser = {
             id: authUser.id,
             email: cleanEmail,
             name: cleanName,
             role,
+            created_at: authUser.created_at || registrationTime,
+            subscription_status: "trial",
         };
         const optimisticAzienda = role === "azienda" ? normalizeAziendaRow({
             id: `pending-${authUser.id}`,
@@ -243,6 +282,8 @@ export function AuthProvider({ children }) {
             rating: 5.0,
             recensioni_count: 0,
             piano: "free",
+            subscription_status: "trial",
+            created_at: authUser.created_at || registrationTime,
         }) : null;
 
         return {
@@ -264,8 +305,13 @@ export function AuthProvider({ children }) {
         }
     }, []);
 
+    const trialStatus = useMemo(
+        () => (user ? evaluateTrialState(user) : null),
+        [user]
+    );
+
     return (
-        <AuthCtx.Provider value={{ user, azienda, loading, login, register, logout, refreshMe }}>
+        <AuthCtx.Provider value={{ user, azienda, loading, trialStatus, login, register, logout, refreshMe }}>
             {children}
         </AuthCtx.Provider>
     );

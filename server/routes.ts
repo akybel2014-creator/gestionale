@@ -130,6 +130,8 @@ apiRouter.post("/auth/register", (req, res) => {
   let aziendaOut = null;
   if (ruolo === "azienda") {
     const founder = db.aziende.filter((a) => a.founder50).length < FOUNDER_LIMIT;
+    const createdIso = nowIso();
+    const trialEndsIso = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000).toISOString();
     const azDoc = {
       id: newId(),
       owner_id: userId,
@@ -145,17 +147,17 @@ apiRouter.post("/auth/register", (req, res) => {
       verified: true,
       verification_status: "verificata" as const,
       plan: founder ? ("pro" as const) : ("free" as const),
-      subscription_status: founder ? "active" : "none",
+      subscription_status: founder ? "active" : "trial",
       founder50: founder,
       trial_used: founder,
-      trial_ends_at: null,
+      trial_ends_at: founder ? null : trialEndsIso,
       emergenze: false,
       emergenze_weekend: false,
       emergenze_notturno: false,
       emergenze_telefono: "",
       rating: 0.0,
       recensioni: 0,
-      created_at: nowIso(),
+      created_at: createdIso,
     };
     db.aziende.push(azDoc);
     aziendaOut = cleanAzienda(azDoc);

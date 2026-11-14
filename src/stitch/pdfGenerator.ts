@@ -1,4 +1,10 @@
-import { calculateTotals, formatEuro, type PocketChat } from "./pocketStore";
+import {
+  buildWhatsAppMessage,
+  calculateTotals,
+  formatEuro,
+  formatItalianWhatsAppPhone,
+  type PocketChat,
+} from "./pocketStore";
 
 function sanitizePdfText(input: string): string {
   return input
@@ -39,7 +45,7 @@ export function buildPdfFilename(clientName: string): string {
 }
 
 export function generateQuotePdfBlob(chat: PocketChat): Blob {
-  const totals = calculateTotals(chat.amount, chat.vatRate, chat.bonusCasa50);
+  const totals = calculateTotals(chat.amount, chat.vatOptionId, chat.bonusOptionId);
   const dateStr = new Date().toLocaleDateString("it-IT");
 
   const ops: string[] = [];
@@ -54,7 +60,7 @@ export function generateQuotePdfBlob(chat: PocketChat): Blob {
   ops.push("0.12 0.16 0.22 rg 40 735 515 65 re f");
   ops.push("1 1 1 rg");
   addText(58, 774, "F2", 20, "CasaLavoroPRO");
-  addText(58, 752, "F1", 10, `PREVENTIVO RAPIDO  -  Data: ${dateStr}`);
+  addText(58, 752, "F1", 10, `PREVENTIVO  -  Data: ${dateStr}`);
 
   // Client section
   ops.push("0.10 0.12 0.15 rg");
@@ -76,28 +82,46 @@ export function generateQuotePdfBlob(chat: PocketChat): Blob {
   cursorY -= 26;
 
   // Totals section
-  addText(48, cursorY, "F2", 12, "RIEPILOGO ECONOMICO");
+  addText(48, cursorY, "F2", 12, "RIEPILOGO ECONOMICO E FISCALE");
   cursorY -= 22;
   addText(48, cursorY, "F1", 11, "Imponibile lavori:");
   addText(410, cursorY, "F2", 11, formatEuro(totals.imponibile));
   cursorY -= 18;
-  addText(48, cursorY, "F1", 11, `IVA (${chat.vatRate}%):`);
+  addText(48, cursorY, "F1", 11, `${totals.vatOption.label}:`);
   addText(410, cursorY, "F2", 11, formatEuro(totals.vatAmount));
-  cursorY -= 14;
+  cursorY -= 16;
+
+  if (totals.vatOption.pdfNote) {
+    ops.push("0.35 0.40 0.48 rg");
+    addText(48, cursorY, "F1", 9, totals.vatOption.pdfNote);
+    ops.push("0.10 0.12 0.15 rg");
+    cursorY -= 14;
+  }
+
   addLine(48, cursorY, 547, cursorY);
   cursorY -= 24;
 
   // Total highlight box
   ops.push(`0.95 0.97 0.99 rg 48 ${cursorY - 8} 499 30 re f`);
   ops.push("0.10 0.12 0.15 rg");
-  addText(58, cursorY + 2, "F2", 13, "TOTALE PREVENTIVO (IVA incl.):");
+  addText(58, cursorY + 2, "F2", 13, "TOTALE DA PAGARE:");
   addText(410, cursorY + 2, "F2", 14, formatEuro(totals.total));
-  cursorY -= 32;
+  cursorY -= 36;
 
-  if (chat.bonusCasa50) {
-    ops.push("0.09 0.55 0.25 rg");
-    addText(48, cursorY, "F2", 11, `Bonus Casa 50% applicato - Costo netto stimato: ${formatEuro(totals.netAfterBonus)}`);
-    cursorY -= 22;
+  if (totals.bonusOption.rate > 0) {
+    ops.push(`0.93 0.98 0.95 rg 48 ${cursorY - 26} 499 44 re f`);
+    ops.push("0.07 0.48 0.22 rg");
+    addText(58, cursorY + 2, "F2", 10, totals.bonusOption.label);
+    const noteLines = wrapText(
+      `Risparmio fiscale stimato per il committente: ${formatEuro(totals.detrazioneAmount)} (${totals.bonusOption.rate}% detraibile in 10 anni tramite bonifico parlante). Costo netto stimato: ${formatEuro(totals.netAfterBonus)}.`,
+      82
+    );
+    let boxY = cursorY - 11;
+    for (const line of noteLines.slice(0, 2)) {
+      addText(58, boxY, "F1", 9, line);
+      boxY -= 12;
+    }
+    cursorY -= 44;
   }
 
   // Footer
@@ -139,39 +163,38 @@ export function downloadQuotePdf(chat: PocketChat): string {
   const a = document.createElement("a");
   a.href = url;
   a.download = filename;
+  a.rel = "noopener";
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
-  setTimeout(() => URL.revokeObjectURL(url), 1500);
+  setTimeout(() => URL.revokeObjectURL(url), 30000);
   return filename;
 }
 
-export async function shareOrDownloadQuotePdf(
-  chat: PocketChat,
-  messageText: string
-): Promise<{ method: "share" | "download"; filename: string }> {
-  const filename = buildPdfFilename(chat.clientName);
-  const blob = generateQuotePdfBlob(chat);
-  const file = new File([blob], filename, { type: "application/pdf" });
+export type DirectWhatsAppPdfResult =
+  | { ok: true; filename: string; waUrl: string }
+  | { ok: false; errorMessage: string };
 
-  if (
-    typeof navigator !== "undefined" &&
-    typeof navigator.share === "function" &&
-    typeof navigator.canShare === "function" &&
-    navigator.canShare({ files: [file] })
-  ) {
-    try {
-      await navigator.share({
-        title: `Preventivo ${chat.clientName}`,
-        text: messageText,
-        files: [file],
-      });
-      return { method: "share", filename };
-    } catch {
-      // Fall back to direct download if user dismisses or share fails
-    }
+export function sendQuotePdfDirectlyToWhatsApp(chat: PocketChat): DirectWhatsAppPdfResult {
+  const { isValid, formattedPhone } = formatItalianWhatsAppPhone(chat.clientPhone);
+  if (!isValid) {
+    return {
+      ok: false,
+      errorMessage: "Inserisci un numero di cellulare italiano valido prima di inviare",
+    };
   }
 
-  downloadQuotePdf(chat);
-  return { method: "download", filename };
+  const filename = downloadQuotePdf(chat);
+  const message = buildWhatsAppMessage(chat);
+  const waUrl = `https://wa.me/${formattedPhone}?text=${encodeURIComponent(message)}`;
+
+  const a = document.createElement("a");
+  a.href = waUrl;
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+
+  return { ok: true, filename, waUrl };
 }

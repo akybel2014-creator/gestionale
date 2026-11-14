@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Outlet, Navigate, useLocation } from "rea
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider, useAuth, dashboardPathFor } from "@/context/AuthContext";
+import { TrialProvider } from "@/stitch/TrialGuard";
 import Header from "@/components/site/Header";
 import Footer from "@/components/site/Footer";
 import CookieBanner from "@/components/CookieBanner";
@@ -12,6 +13,7 @@ import { PaymentSuccess, PaymentCancel } from "@/pages/PaymentResult";
 import "@/App.css";
 
 // Pagine CasaLavoroPRO caricate on-demand
+const StitchAuthPage = lazy(() => import("@/stitch/StitchAuthPage"));
 const NuovoPreventivoPage = lazy(() => import("@/stitch/NuovoPreventivoPage"));
 const WhatsappHubPage = lazy(() => import("@/stitch/WhatsappHubPage"));
 const ListiniIvaPage = lazy(() => import("@/stitch/ListiniIvaPage"));
@@ -198,34 +200,46 @@ function PageLoader() {
     );
 }
 
+function StitchAuthGate({ children }) {
+    const { user, loading } = useAuth();
+    if (loading) {
+        return <PageLoader />;
+    }
+    if (!user) {
+        return <StitchAuthPage />;
+    }
+    return children;
+}
+
 function App() {
     return (
         <ErrorBoundary>
             <BrowserRouter>
                 <AuthProvider>
+                    <TrialProvider>
                     <SmoothScroll />
                     <ScrollToTop />
                     <Toaster theme="dark" position="top-center" richColors />
                     <Suspense fallback={<PageLoader />}>
                     <Routes>
                         {/* Stitch CasaLavoroPRO App Routes */}
-                        <Route path="/" element={<DashboardPage />} />
-                        <Route path="/preventivo" element={<NuovoPreventivoPage />} />
-                        <Route path="/preventivo-base" element={<NuovoPreventivoPage showDetrazioni={false} />} />
-                        <Route path="/whatsapp" element={<WhatsappHubPage />} />
-                        <Route path="/listini-iva" element={<ListiniIvaPage />} />
-                        <Route path="/anteprima-whatsapp-marco" element={<AnteprimaWhatsappMarcoPage />} />
-                        <Route path="/anteprima-whatsapp-colombo" element={<AnteprimaWhatsappColomboPage />} />
-                        <Route path="/ecobonus" element={<ComputoEcobonusPage />} />
-                        <Route path="/confronto-fiscale" element={<ConfrontoFiscalePage />} />
-                        <Route path="/pratica-gse" element={<PraticaGsePage />} />
-                        <Route path="/ricevuta-gse" element={<RicevutaGsePage />} />
-                        <Route path="/istruttoria-gse" element={<IstruttoriaGsePage />} />
-                        <Route path="/registro-gse" element={<RegistroGsePage />} />
-                        <Route path="/notifica-massiva" element={<NotificaMassivaPage />} />
-                        <Route path="/risposte-live" element={<SyncLiveRispostePage />} />
-                        <Route path="/fuori-orario" element={<FuoriOrarioFeriePage />} />
-                        <Route path="/triage-sos" element={<StoricoTriageSosPage />} />
+                        <Route path="/" element={<StitchAuthGate><DashboardPage /></StitchAuthGate>} />
+                        <Route path="/preventivo" element={<StitchAuthGate><NuovoPreventivoPage /></StitchAuthGate>} />
+                        <Route path="/preventivo-base" element={<StitchAuthGate><NuovoPreventivoPage showDetrazioni={false} /></StitchAuthGate>} />
+                        <Route path="/whatsapp" element={<StitchAuthGate><WhatsappHubPage /></StitchAuthGate>} />
+                        <Route path="/listini-iva" element={<StitchAuthGate><ListiniIvaPage /></StitchAuthGate>} />
+                        <Route path="/anteprima-whatsapp-marco" element={<StitchAuthGate><AnteprimaWhatsappMarcoPage /></StitchAuthGate>} />
+                        <Route path="/anteprima-whatsapp-colombo" element={<StitchAuthGate><AnteprimaWhatsappColomboPage /></StitchAuthGate>} />
+                        <Route path="/ecobonus" element={<StitchAuthGate><ComputoEcobonusPage /></StitchAuthGate>} />
+                        <Route path="/confronto-fiscale" element={<StitchAuthGate><ConfrontoFiscalePage /></StitchAuthGate>} />
+                        <Route path="/pratica-gse" element={<StitchAuthGate><PraticaGsePage /></StitchAuthGate>} />
+                        <Route path="/ricevuta-gse" element={<StitchAuthGate><RicevutaGsePage /></StitchAuthGate>} />
+                        <Route path="/istruttoria-gse" element={<StitchAuthGate><IstruttoriaGsePage /></StitchAuthGate>} />
+                        <Route path="/registro-gse" element={<StitchAuthGate><RegistroGsePage /></StitchAuthGate>} />
+                        <Route path="/notifica-massiva" element={<StitchAuthGate><NotificaMassivaPage /></StitchAuthGate>} />
+                        <Route path="/risposte-live" element={<StitchAuthGate><SyncLiveRispostePage /></StitchAuthGate>} />
+                        <Route path="/fuori-orario" element={<StitchAuthGate><FuoriOrarioFeriePage /></StitchAuthGate>} />
+                        <Route path="/triage-sos" element={<StitchAuthGate><StoricoTriageSosPage /></StitchAuthGate>} />
 
                         {/* Legacy Marketplace Routes */}
                         <Route element={<PublicLayout />}>
@@ -263,6 +277,7 @@ function App() {
                     </Routes>
                     </Suspense>
                     <ConditionalCookieBanner />
+                    </TrialProvider>
                 </AuthProvider>
             </BrowserRouter>
         </ErrorBoundary>

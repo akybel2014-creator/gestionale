@@ -166,6 +166,12 @@
         @apply bg-background text-foreground;
         font-family: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
     }
+    html:has(.stitch-app),
+    body:has(.stitch-app) {
+        background-color: #f7f9fb;
+        color: #191c1e;
+        overflow-x: hidden;
+    }
     h1, h2, h3, h4 {
         font-family: "Outfit", "Plus Jakarta Sans", sans-serif;
     }
@@ -185,6 +191,10 @@
     }
     ::-webkit-scrollbar-thumb:hover {
         background: #FF5A1F;
+    }
+    html:has(.stitch-app)::-webkit-scrollbar-track,
+    body:has(.stitch-app)::-webkit-scrollbar-track {
+        background: #f7f9fb;
     }
 }
 
@@ -332,12 +342,14 @@
     scrollbar-width: none;
 }
 
-.pb-safe {
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-}
+@layer utilities {
+    .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
 
-.pt-safe {
-    padding-top: env(safe-area-inset-top, 0px);
+    .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+    }
 }
 
 .material-symbols-outlined {

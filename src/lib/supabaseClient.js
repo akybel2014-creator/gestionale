@@ -26,10 +26,30 @@ export function cleanSupabaseUrl(rawUrl) {
         return "";
     }
 
+    // Se è stato incollato il link della dashboard Supabase (es. https://supabase.com/dashboard/project/<ref>)
+    const dashMatch = u.match(/supabase\.com\/dashboard\/project\/([a-zA-Z0-9_-]+)/);
+    if (dashMatch && dashMatch[1]) {
+        return `https://${dashMatch[1]}.supabase.co`;
+    }
+
     if (!u.startsWith("http://") && !u.startsWith("https://")) {
         u = "https://" + u;
     }
-    return u.replace(/\/+$/, "");
+
+    u = u
+        .trim()
+        .replace(/\/(auth|rest|storage|functions|realtime)\/v1\/?$/i, "")
+        .replace(/\/+$/, "");
+
+    try {
+        const parsed = new URL(u);
+        if (parsed.hostname.endsWith(".supabase.co")) {
+            return parsed.origin.replace(/\/+$/, "");
+        }
+        return `${parsed.origin}${parsed.pathname}`.replace(/\/+$/, "");
+    } catch {
+        return u.replace(/\/+$/, "");
+    }
 }
 
 export function cleanSupabaseKey(rawKey) {
@@ -119,11 +139,11 @@ export function safeCreateClient(url, key) {
     const fallbackUrl = "https://placeholder-project.supabase.co";
     const fallbackKey = "placeholder-anon-key";
     try {
-        const targetUrl = cleanSupabaseUrl(url) || fallbackUrl;
+        const cleanUrl = (cleanSupabaseUrl(url) || fallbackUrl).trim().replace(/\/+$/, "");
         const targetKey = cleanSupabaseKey(key) || fallbackKey;
         // Valida la sintassi dell'URL per prevenire TypeError all'avvio
-        new URL(targetUrl);
-        return createClient(targetUrl, targetKey, {
+        new URL(cleanUrl);
+        return createClient(cleanUrl, targetKey, {
             auth: {
                 persistSession: true,
                 autoRefreshToken: true,
