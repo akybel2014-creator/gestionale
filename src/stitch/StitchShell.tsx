@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { LogOut } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
+import Logo from "@/components/Logo";
 
 
 type ActiveTab = "dashboard" | "preventivo" | "whatsapp" | "listini" | "none";
@@ -50,11 +51,7 @@ export default function StitchShell({
       <header className="fixed top-0 inset-x-0 z-50 bg-primary-container/95 backdrop-blur-xl pt-safe shadow-[0_1px_8px_rgba(0,0,0,0.08)]">
         <div className="w-full max-w-5xl mx-auto h-16 px-4 sm:px-6 flex items-center justify-between gap-2">
           <Link to="/" className="flex items-center shrink-0">
-            <img
-              alt="CasaLavoroPRO"
-              className="h-8 w-auto object-contain"
-              src="/assets/aistudio/image_07da2a6d.png"
-            />
+            <Logo size={32} className="[&>span]:text-lg sm:[&>span]:text-xl" />
           </Link>
           <div className="flex items-center gap-2 min-w-0">
             <Link

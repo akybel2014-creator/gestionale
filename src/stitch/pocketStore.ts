@@ -229,9 +229,9 @@ export function savePocketSettings(settings: PocketSettings): PocketSettings {
 export function getPocketChats(): PocketChat[] {
   try {
     const raw = localStorage.getItem(CHATS_KEY);
-    if (!raw) return DEFAULT_CHATS;
+    if (raw === null) return DEFAULT_CHATS;
     const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed) || parsed.length === 0) return DEFAULT_CHATS;
+    if (!Array.isArray(parsed)) return DEFAULT_CHATS;
     return parsed.map((item) => ({
       ...item,
       vatOptionId: getVatOption(item.vatOptionId ?? item.vatRate).id,
@@ -269,7 +269,20 @@ export function setActiveChatId(id: string): void {
 export function getActiveChat(): PocketChat {
   const chats = getPocketChats();
   const activeId = getActiveChatId();
-  return chats.find((c) => c.id === activeId) || chats[0];
+  const found = chats.find((c) => c.id === activeId) || chats[0];
+  if (found) return found;
+  const settings = getPocketSettings();
+  return {
+    id: "",
+    clientName: "",
+    clientPhone: "+39 ",
+    description: "",
+    amount: 0,
+    vatOptionId: settings.defaultVatId,
+    bonusOptionId: settings.defaultBonusId,
+    status: "Bozza",
+    updatedAt: "",
+  };
 }
 
 function formatRowUpdatedAt(iso?: string | null): string {
@@ -531,6 +544,41 @@ export async function markChatAsSentWithCloudSync(chatId: string): Promise<{
     }
   }
   return { chats: updated, rlsDenied: false };
+}
+
+export async function deleteQuoteWithCloudSync(chatId: string): Promise<{
+  chats: PocketChat[];
+  rlsDenied: boolean;
+}> {
+  const chats = getPocketChats();
+  const updated = chats.filter((c) => c.id !== chatId);
+  savePocketChats(updated);
+  if (getActiveChatId() === chatId) {
+    setActiveChatId(updated[0]?.id || "");
+  }
+  try {
+    const client = supabase as SupabaseClient;
+    const {
+      data: { session },
+    } = await client.auth.getSession();
+    if (session?.user?.id && isUuid(chatId)) {
+      const { error } = await client
+        .from("preventivi")
+        .delete()
+        .eq("id", chatId)
+        .eq("user_id", session.user.id);
+      if (error && isRlsPermissionError(error)) {
+        savePocketChats(chats);
+        return { chats, rlsDenied: true };
+      }
+    }
+  } catch (err) {
+    if (isRlsPermissionError(err)) {
+      savePocketChats(chats);
+      return { chats, rlsDenied: true };
+    }
+  }
+  return { chats, rlsDenied: false };
 }
 
 export function calculateTotals(

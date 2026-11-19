@@ -4,6 +4,7 @@ import StitchShell from "./StitchShell";
 import { useTrialSession } from "./TrialGuard";
 import {
   calculateTotals,
+  deleteQuoteWithCloudSync,
   fetchCloudQuotes,
   formatEuro,
   getInitials,
@@ -24,6 +25,8 @@ export default function DashboardPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [inlineToast, setInlineToast] = useState<string | null>(null);
   const [toastTone, setToastTone] = useState<"success" | "warning">("success");
+  const [quoteToDelete, setQuoteToDelete] = useState<PocketChat | null>(null);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -310,9 +313,21 @@ export default function DashboardPage() {
                         const filename = downloadQuotePdf(chat);
                         triggerToast(`PDF scaricato: ${filename}`);
                       }}
-                      className="w-12 h-[48px] rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors flex-shrink-0"
+                      className="w-12 h-[48px] rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors flex-shrink-0 cursor-pointer"
                     >
                       <span className="material-symbols-outlined text-xl">picture_as_pdf</span>
+                    </button>
+                    <button
+                      type="button"
+                      aria-label={`Elimina preventivo di ${chat.clientName}`}
+                      title="Elimina preventivo"
+                      onClick={() => {
+                        if (!requireActiveTrial()) return;
+                        setQuoteToDelete(chat);
+                      }}
+                      className="w-12 h-[48px] rounded-xl bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-status-danger hover:bg-error-container/60 transition-colors flex-shrink-0 cursor-pointer"
+                    >
+                      <span className="material-symbols-outlined text-xl">delete</span>
                     </button>
                   </div>
                 </div>
@@ -321,76 +336,8 @@ export default function DashboardPage() {
           )}
         </div>
 
-        {/* Recensioni e Riprova Sociale */}
-        <section
-          id="artisan-reviews-section"
-          aria-labelledby="artisan-reviews-heading"
-          className="mt-6 flex flex-col gap-3 w-full"
-        >
-          <div className="flex items-center justify-between px-0.5">
-            <div className="flex items-center gap-1.5">
-              <span className="material-symbols-outlined text-secondary-container text-lg">verified</span>
-              <h2
-                id="artisan-reviews-heading"
-                className="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-bold"
-              >
-                Cosa dicono gli artigiani
-              </h2>
-            </div>
-            <span className="font-label-sm text-[11px] text-on-surface-variant font-semibold">
-              4,9/5 · Verificati
-            </span>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            {[
-              {
-                name: "Marco T.",
-                role: "Termoidraulico - Vicenza",
-                quote:
-                  "Finalmente un preventivo fatto al volo in cantiere con il calcolo del Bonus Casa al 50%. I clienti lo firmano subito.",
-              },
-              {
-                name: "Andrea B.",
-                role: "Impresa Edile - Padova",
-                quote:
-                  "Velocissimo da telefono. Invio il PDF su WhatsApp prima ancora di salire sul furgone.",
-              },
-              {
-                name: "Roberto M.",
-                role: "Elettricista - Verona",
-                quote:
-                  "Semplice, zero complicazioni da commercialista. Fa esattamente quello che serve a noi.",
-              },
-            ].map((review) => (
-              <article
-                key={review.name}
-                className="bg-surface-card rounded-2xl p-space-md shadow-sm border border-border-slate/50 flex flex-col justify-between gap-2.5"
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <div className="min-w-0">
-                    <h3 className="font-headline-sm text-headline-sm text-on-surface font-bold truncate">
-                      {review.name}
-                    </h3>
-                    <p className="font-body-sm text-[12px] text-text-muted truncate">
-                      {review.role}
-                    </p>
-                  </div>
-                  <span
-                    className="text-xs tracking-tight shrink-0"
-                    aria-label="Valutazione 5 stelle su 5"
-                  >
-                    ⭐⭐⭐⭐⭐
-                  </span>
-                </div>
-                <p className="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
-                  &ldquo;{review.quote}&rdquo;
-                </p>
-              </article>
-            ))}
-          </div>
-
-          {/* Pulsante Feedback Artigiano */}
+        {/* Pulsante Feedback Artigiano */}
+        <div className="mt-6 w-full">
           <a
             id="developer-feedback-whatsapp-btn"
             href={`https://wa.me/393423255008?text=${encodeURIComponent(
@@ -417,7 +364,69 @@ export default function DashboardPage() {
               chevron_right
             </span>
           </a>
-        </section>
+        </div>
+
+        {quoteToDelete && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="delete-quote-dialog-title"
+            className="fixed inset-0 z-50 bg-black/50 backdrop-blur-[2px] flex items-center justify-center p-4"
+          >
+            <div className="w-full max-w-sm bg-surface-card rounded-2xl p-5 shadow-2xl border border-border-slate flex flex-col gap-4">
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-xl bg-error-container text-status-danger flex items-center justify-center shrink-0">
+                  <span className="material-symbols-outlined text-xl">delete</span>
+                </div>
+                <div className="min-w-0">
+                  <h2
+                    id="delete-quote-dialog-title"
+                    className="font-headline-sm text-headline-sm text-on-surface font-bold"
+                  >
+                    Elimina preventivo
+                  </h2>
+                  <p className="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                    Vuoi eliminare definitivamente il preventivo per{" "}
+                    <span className="font-semibold text-on-surface">{quoteToDelete.clientName}</span>?
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center justify-end gap-2">
+                <button
+                  type="button"
+                  disabled={deleting}
+                  onClick={() => setQuoteToDelete(null)}
+                  className="min-h-[42px] px-4 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md font-semibold cursor-pointer"
+                >
+                  Annulla
+                </button>
+                <button
+                  type="button"
+                  disabled={deleting}
+                  onClick={async () => {
+                    if (!quoteToDelete) return;
+                    setDeleting(true);
+                    const { chats: updated, rlsDenied } = await deleteQuoteWithCloudSync(
+                      quoteToDelete.id
+                    );
+                    setDeleting(false);
+                    if (rlsDenied) {
+                      setQuoteToDelete(null);
+                      forceExpireAndOpenPaywall();
+                      return;
+                    }
+                    setChats(updated);
+                    setQuoteToDelete(null);
+                    triggerToast("Preventivo eliminato.", "success", 2800);
+                  }}
+                  className="min-h-[42px] px-4 rounded-xl bg-status-danger hover:opacity-90 disabled:opacity-60 text-white font-label-md text-label-md font-bold cursor-pointer"
+                >
+                  {deleting ? "Eliminazione..." : "Elimina"}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {inlineToast && (
           <div

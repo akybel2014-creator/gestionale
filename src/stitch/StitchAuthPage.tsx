@@ -3,6 +3,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { Eye, EyeOff, Lock, Mail, Phone, UserCheck, Building2 } from "lucide-react";
 import { supabase } from "@/lib/supabaseClient";
 import { useAuth } from "@/context/AuthContext";
+import Logo from "@/components/Logo";
 import { formatItalianWhatsAppPhone } from "./pocketStore";
 
 type AuthMode = "register" | "login";
@@ -191,11 +192,7 @@ export default function StitchAuthPage() {
       {/* Header Brand */}
       <header className="w-full bg-primary-container text-on-primary pt-10 sm:pt-12 pb-12 px-4 rounded-b-[2rem] shadow-md shrink-0">
         <div className="w-full max-w-md mx-auto flex flex-col items-center text-center gap-3">
-          <img
-            src="/assets/aistudio/image_07da2a6d.png"
-            alt="CasaLavoroPRO"
-            className="h-10 w-auto object-contain"
-          />
+          <Logo size={36} />
           <h1 className="font-headline-md text-headline-md sm:text-[24px] font-bold text-on-primary leading-snug">
             Il Gestionale Preventivi per Artigiani e Imprese
           </h1>

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import StitchShell from "./StitchShell";
 import { useTrialSession } from "./TrialGuard";
 import {
@@ -40,6 +41,27 @@ export default function WhatsappHubPage() {
   }, []);
 
   const activeChat = chats.find((c) => c.id === selectedId) || chats[0];
+
+  if (!activeChat) {
+    return (
+      <StitchShell title="Whatsapp Hub" activeTab="whatsapp">
+        <div className="w-full max-w-3xl mx-auto pb-8">
+          <div className="bg-surface-card rounded-2xl p-6 text-center shadow-sm flex flex-col items-center gap-3">
+            <p className="font-body-md text-body-md text-text-muted">
+              Nessun preventivo disponibile.
+            </p>
+            <Link
+              to="/preventivo"
+              className="min-h-[44px] px-5 rounded-xl bg-secondary-container text-on-secondary font-label-md text-label-md font-bold flex items-center justify-center"
+            >
+              Crea Nuovo Preventivo
+            </Link>
+          </div>
+        </div>
+      </StitchShell>
+    );
+  }
+
   const totals = calculateTotals(activeChat.amount, activeChat.vatOptionId, activeChat.bonusOptionId);
   const messageText = buildWhatsAppMessage(activeChat);
   const pdfFilename = buildPdfFilename(activeChat.clientName);
